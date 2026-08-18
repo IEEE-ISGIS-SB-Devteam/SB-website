@@ -3,8 +3,8 @@ import { FC, useRef } from 'react';
 import Lottie from 'lottie-react'; // Import Lottie
 import darkThemeHeroImg from '../../images/hero-img.png';
 import lightThemeHeroImg from '../../images/light-hero-img.jpg';
-import darkAnimationData from '../../../public/Animation.json'; // Adjust the path to your JSON file
-import lightAnimationData from '../../../public/Animation2.json'; // Adjust the path to your JSON file
+import darkAnimationData from '../../Animation.json'; // Adjust the path to your JSON file
+import lightAnimationData from '../../Animation2.json'; // Adjust the path to your JSON file
 import './hero.css';
 
 interface Props {
