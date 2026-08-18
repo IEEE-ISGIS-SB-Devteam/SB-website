@@ -1,0 +1,223 @@
+/* Our Awards Section */
+#awards {
+  padding: 80px 0;
+  background: var(--bg-color);
+  transition: background 0.3s ease;
+}
+
+#awards .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.awards-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.awards-header h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--heading-color);
+  margin-top: 0.75rem;
+}
+
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Award Card */
+.award-card {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  background: var(--card-bg-local);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 2.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.award-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+  border-color: rgba(55, 156, 246, 0.35);
+}
+
+/* Image container */
+.award-image {
+  flex: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.award-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.award-card:hover .award-image img {
+  transform: scale(1.03);
+}
+
+/* Info container */
+.award-info {
+  flex: 1;
+}
+
+.award-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #379cf6, #0682c1);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 14px rgba(55, 156, 246, 0.35);
+}
+
+.award-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  margin-bottom: 1.8rem;
+}
+
+.achievements-section h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+  border-left: 3px solid #379cf6;
+  padding-left: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.achievements-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+
+.achievements-section li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.achievements-section li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #379cf6;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.read-more-wrapper {
+  margin-top: 1.5rem;
+}
+
+.read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: linear-gradient(135deg, #379cf6, #0682c1);
+  color: white;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(55, 156, 246, 0.3);
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(55, 156, 246, 0.45);
+  filter: brightness(1.08);
+  text-decoration: none;
+}
+
+/* Alternating layout */
+.award-card.image-left {
+  flex-direction: row;
+}
+
+.award-card.image-right {
+  flex-direction: row-reverse;
+}
+
+/* Dark / light theme scoped variables */
+body.light-theme #awards {
+  --bg-color: #f8fafc;
+  --card-bg-local: #ffffff;
+  --border-color: #e2e8f0;
+  --heading-color: #0f172a;
+  --text-color: #475569;
+}
+
+body:not(.light-theme) #awards {
+  --bg-color: #0d1117;
+  --card-bg-local: #161b22;
+  --border-color: rgba(48, 54, 61, 0.9);
+  --heading-color: #e6edf3;
+  --text-color: #8b949e;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .award-card {
+    flex-direction: column !important;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .achievements-section h3 {
+    text-align: center;
+    border-left: none;
+    border-bottom: 3px solid #379cf6;
+    padding-left: 0;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .achievements-section ul {
+    text-align: left;
+    display: inline-block;
+  }
+
+  .read-more-wrapper {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #awards {
+    padding: 60px 0;
+  }
+
+  .awards-header h2 {
+    font-size: 1.9rem;
+  }
+
+  .award-card {
+    padding: 1.5rem;
+  }
+}

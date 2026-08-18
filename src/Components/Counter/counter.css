@@ -1,0 +1,99 @@
+.counter {
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.light-theme .counter {
+    background: linear-gradient(135deg, #0056a0 0%, #0682c1 50%, #0899d4 100%);
+    border-color: transparent;
+}
+
+.counter__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.counter__item {
+    flex: 1;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+
+/* Vertical separator between items */
+.counter__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.light-theme .counter__item:not(:last-child)::after {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.counter__number,
+.counter__title {
+    background: var(--counter-color);
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.light-theme .counter__number,
+.light-theme .counter__title {
+    background: #ffffff;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.counter__number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    display: block;
+}
+
+.counter__title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+@media only screen and (max-width: 992px) {
+    .counter__number {
+        font-size: 2.2rem;
+    }
+
+    .counter__title {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .counter__wrapper {
+        flex-direction: column;
+        row-gap: 0;
+    }
+    .counter__item {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .counter__item:not(:last-child)::after {
+        display: none;
+    }
+    .counter__item:last-child {
+        border-bottom: none;
+    }
+}

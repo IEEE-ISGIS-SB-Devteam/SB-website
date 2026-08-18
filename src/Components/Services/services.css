@@ -1,0 +1,121 @@
+.services__top-content {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.services__item-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.services__item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    width: 25%;
+    padding: 2rem 1.5rem;
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Top accent bar */
+.services__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.services__item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(55, 156, 246, 0.3);
+}
+
+.services__item:hover::before {
+    opacity: 1;
+}
+
+.light-theme .services__item {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.light-theme .services__item:hover {
+    box-shadow: 0 16px 40px rgba(6, 130, 193, 0.15);
+    border-color: rgba(6, 130, 193, 0.3);
+}
+
+.services__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0 2rem 0;
+}
+
+.services__icon i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    padding: 14px;
+    background: rgba(55, 156, 246, 0.1);
+    border: 1px solid rgba(55, 156, 246, 0.2);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.services__item:hover .services__icon i {
+    background: var(--primary-gradient);
+    color: #fff;
+    border-color: transparent;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(55, 156, 246, 0.35);
+}
+
+.light-theme .services__icon i {
+    background: rgba(6, 130, 193, 0.08);
+    border-color: rgba(6, 130, 193, 0.18);
+}
+
+.services__title {
+    color: var(--primary-color);
+    margin-block: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.services__item .description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+@media only screen and (max-width: 992px) {
+    .services__top-content h2 {
+        font-size: 1.5rem;
+    }
+    .services__item-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 1.5rem;
+    }
+    .services__item {
+        width: calc(50% - 0.75rem);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .services__item-wrapper {
+        flex-direction: column;
+    }
+    .services__item {
+        width: 100%;
+    }
+}
