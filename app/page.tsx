@@ -1,69 +1,61 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* Hero */}
+      <section className="py-16 px-4 text-center border-b border-black/10 dark:border-white/10">
+        <h1 className="text-4xl sm:text-5xl font-bold leading-tight max-w-3xl mx-auto">
+          <span className="text-[#00629B]">IEEE</span> ISGIS<br />
+          <span className="text-2xl sm:text-3xl font-normal">Student Branch</span>
+        </h1>
+        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+          The official student branch of the Institut Supérieur de Gestion Industrielle de Sfax.
+          Bridging technology, engineering, and innovation.
+        </p>
+        <div className="w-16 h-1 bg-[#00629B] mx-auto mt-6 rounded-full"></div>
+      </section>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <h2 className="text-2xl font-bold mb-4">Welcome</h2>
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          The IEEE ISGIS Student Branch is a community of engineering and technology students dedicated to
+          advancing innovation, professional development, and technical excellence. We are part of the
+          world’s largest technical professional organization.
+        </p>
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+          Whether you’re interested in AI, robotics, sustainable energy, or embedded systems —
+          our branch provides a platform to learn, connect, and lead.
+        </p>
+
+        <h3 className="text-xl font-semibold mt-8 mb-4">Featured Initiatives</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="border border-black/10 dark:border-white/10 rounded-xl p-5 hover:border-[#00629B] transition">
+            <h4 className="font-semibold">Tech Symposium 2026</h4>
+            <p className="text-sm text-gray-500 dark:text-gray-400">March 2026 • Sfax</p>
+            <p className="text-sm mt-1">Annual gathering of engineering minds with workshops, keynotes, and networking.</p>
+          </div>
+          <div className="border border-black/10 dark:border-white/10 rounded-xl p-5 hover:border-[#00629B] transition">
+            <h4 className="font-semibold">Women in Engineering</h4>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Ongoing</p>
+            <p className="text-sm mt-1">Empowering women in STEM through mentorship, talks, and community events.</p>
+          </div>
+          <div className="border border-black/10 dark:border-white/10 rounded-xl p-5 hover:border-[#00629B] transition">
+            <h4 className="font-semibold">IEEExtreme 2026</h4>
+            <p className="text-sm text-gray-500 dark:text-gray-400">October 2026</p>
+            <p className="text-sm mt-1">24-hour global coding competition — team up and push your limits.</p>
+          </div>
+        </div>
+
+        <div className="mt-8 p-5 bg-[#f5f9fc] dark:bg-[#1a2a3a] border-l-4 border-[#00629B] rounded-r">
+          <p className="font-medium">
+            <span className="text-[#00629B]">✦</span> New members welcome —{' '}
+            <Link href="/join" className="text-[#00629B] font-semibold hover:underline">join our community</Link>
+            {' '}and shape the future of technology.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
