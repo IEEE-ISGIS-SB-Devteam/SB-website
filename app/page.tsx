@@ -16,7 +16,6 @@ export default function HomePage() {
         <div className="w-16 h-1 bg-[#00629B] mx-auto mt-6 rounded-full"></div>
       </section>
 
-      {/* Content */}
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <h2 className="text-2xl font-bold mb-4">Welcome</h2>
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
