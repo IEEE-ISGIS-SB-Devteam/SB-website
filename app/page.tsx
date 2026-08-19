@@ -11,7 +11,7 @@ export default function HomePage() {
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
           The official student branch of the Institut Supérieur de Gestion Industrielle de Sfax.
-          Bridging technology, engineering, and innovation.
+          Bridging technology, engineering, and innovation
         </p>
         <div className="w-16 h-1 bg-[#00629B] mx-auto mt-6 rounded-full"></div>
       </section>
