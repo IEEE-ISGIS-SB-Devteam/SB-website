@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useTheme } from "./ThemeProvider"; // adjust path
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="sticky top-0 z-50 bg-white dark:bg-[#0a0a0a] border-b border-black/10 dark:border-white/10">
@@ -35,26 +37,42 @@ export default function Navbar() {
           <li><Link href="/contact" className="hover:text-[#00629B] transition">Contact Us</Link></li>
         </ul>
 
-        {/* Join Us Button */}
-        <div className="hidden md:block">
+        {/* Right side: Join button + Theme toggle */}
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition text-xl"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? "🌙" : "☀️"}
+          </button>
           <Link href="/join" className="bg-[#00629B] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#004b78] transition">
             Join Us
           </Link>
         </div>
 
         {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className="block w-6 h-0.5 bg-current"></span>
-          <span className="block w-6 h-0.5 bg-current"></span>
-          <span className="block w-6 h-0.5 bg-current"></span>
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition text-xl"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? "🌙" : "☀️"}
+          </button>
+          <button
+            className="flex flex-col gap-1.5 p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="block w-6 h-0.5 bg-current"></span>
+            <span className="block w-6 h-0.5 bg-current"></span>
+            <span className="block w-6 h-0.5 bg-current"></span>
+          </button>
+        </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu (unchanged except we already have the toggle inside the hamburger row) */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white dark:bg-[#0a0a0a] border-t border-black/10 dark:border-white/10 px-4 py-4 space-y-3">
           <Link href="/" className="block hover:text-[#00629B]" onClick={() => setMobileMenuOpen(false)}>Home</Link>

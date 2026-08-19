@@ -8,6 +8,21 @@
   --ieee-blue: #00629B;
 }
 
+/* Dark theme variables (applied when .dark is on <html>) */
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* System preference fallback (if no .dark class is present) */
+@media (prefers-color-scheme: dark) {
+  /* Only apply if .dark is NOT present */
+  html:not(.dark) {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -15,13 +30,6 @@
   
   /* 2. Strings with spaces must use clear double quotes inside the theme scope */
   --font-sans: "Open Sans", system-ui, -apple-system, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {

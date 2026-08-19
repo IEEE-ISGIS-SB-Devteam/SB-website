@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
