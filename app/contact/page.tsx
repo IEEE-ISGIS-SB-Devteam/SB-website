@@ -1,3 +1,15 @@
+import { generatePageMetadata } from "../lib/seo";
+
+// Page-specific metadata
+export const metadata = generatePageMetadata({
+  title: "Contact Us",
+  description: "Learn about the IEEE ISGIS Student Branch – our mission, vision, and values.",
+  openGraph: {
+    title: "Contact IEEE ISGIS Student Branch",
+    description: "Learn about our community, history, and commitment to excellence.",
+  },
+});
+
 export default function ContactPage() {
   return (
     <>

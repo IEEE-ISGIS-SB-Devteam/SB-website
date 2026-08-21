@@ -1,3 +1,14 @@
+import { generatePageMetadata } from "../lib/seo";
+
+// Page-specific metadata
+export const metadata = generatePageMetadata({
+  title: "Owar Awards & Recognition",
+  description: "Learn about the IEEE ISGIS Student Branch – our mission, vision, and values.",
+  openGraph: {
+    title: "About IEEE ISGIS Student Branch",
+    description: "Learn about our community, history, and commitment to excellence.",
+  },
+});
 export default function AwardsPage() {
   return (
     <>

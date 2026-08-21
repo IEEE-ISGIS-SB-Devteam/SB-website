@@ -3,22 +3,85 @@
 @import "tailwindcss";
 
 :root {
+  /* Light mode – crisp and clean */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
   --ieee-blue: #00629B;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.10);
 }
 
-/* Dark theme – applied when <html> has class "dark" */
+/* Dark mode – deep and sophisticated */
 html.dark {
   --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #f1f5f9;
+  --card-bg: #141414;
+  --card-border: #2a2a2a;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
 }
+
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Open Sans", system-ui, -apple-system, sans-serif;
+  line-height: 1.6; /* improved readability */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Consistent spacing and text sizing for mobile */
+p {
+  font-size: 0.95rem; /* ~15px on mobile */
+}
+
+@media (min-width: 640px) {
+  p {
+    font-size: 1rem; /* ~16px on larger screens */
+  }
+}
+
+/* Improve image handling */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container improvements */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Smooth transitions for dark/light mode */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Remove transition from elements that might cause flicker */
+.hero, .folder, .card-swap {
+  transition: none;
 }

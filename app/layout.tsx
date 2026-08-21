@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { baseMetadata } from "./lib/seo";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -11,10 +12,8 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
 });
 
-export const metadata: Metadata = {
-  title: "IEEE ISGIS Student Branch",
-  description: "Institut Supérieur de Gestion Industrielle de Sfax - IEEE Student Branch",
-};
+// Use the base metadata
+export const metadata: Metadata = baseMetadata;
 
 export default function RootLayout({
   children,
