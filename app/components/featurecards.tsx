@@ -28,22 +28,22 @@ export default function FeatureCards({
   cards,
 }: FeatureCardsProps) {
   return (
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-          {/* Left: Content */}
-          <div className="lg:w-1/2 space-y-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--foreground)]">
+    <section className="py-10 md:py-20">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+          {/* Left: Text & CTAs */}
+          <div className="lg:w-1/2 space-y-4 sm:space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--foreground)]">
               {title}
             </h2>
-            <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-lg">
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
               {description}
             </p>
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap gap-3 pt-2">
               {ctaText && ctaLink && (
                 <Link
                   href={ctaLink}
-                  className="bg-[var(--ieee-blue)] text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition shadow-sm"
+                  className="bg-[var(--ieee-blue)] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:opacity-90 transition shadow-sm"
                 >
                   {ctaText}
                 </Link>
@@ -51,7 +51,7 @@ export default function FeatureCards({
               {ctaSecondaryText && ctaSecondaryLink && (
                 <Link
                   href={ctaSecondaryLink}
-                  className="border border-[var(--card-border)] text-[var(--foreground)] px-8 py-3 rounded-full font-semibold hover:bg-[var(--card-border)]/20 transition"
+                  className="border border-[var(--card-border)] text-[var(--foreground)] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-[var(--card-border)]/20 transition"
                 >
                   {ctaSecondaryText}
                 </Link>
@@ -59,9 +59,10 @@ export default function FeatureCards({
             </div>
           </div>
 
-          {/* Right: Card Stack */}
-          <div className="lg:w-1/2 flex justify-center">
-            <div className="w-full max-w-sm md:max-w-md aspect-[4/3]">
+          {/* Right: Card Stack – Desktop: CardSwap, Mobile: Grid */}
+          <div className="lg:w-1/2 flex justify-center w-full">
+            {/* Desktop: CardSwap (hidden on mobile) */}
+            <div className="hidden md:block w-full max-w-sm md:max-w-md aspect-[4/3]">
               <CardSwap
                 width={380}
                 height={285}
@@ -78,7 +79,7 @@ export default function FeatureCards({
                     key={idx}
                     className="bg-[var(--card-bg)] overflow-hidden rounded-2xl border border-[var(--card-border)] shadow-[var(--shadow-md)]"
                   >
-                    <div className="w-full h-full flex flex-col p-5 relative">
+                    <div className="w-full h-full flex flex-col p-4 relative">
                       {card.label && (
                         <span className="absolute top-3 right-3 z-10 bg-[var(--ieee-blue)] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                           {card.label}
@@ -88,18 +89,50 @@ export default function FeatureCards({
                         src={card.image}
                         alt={card.title}
                         loading="lazy"
-                        className="w-full h-36 object-cover rounded-xl mb-3"
+                        className="w-full h-32 object-cover rounded-xl mb-3"
                       />
                       <h3 className="font-bold text-[var(--foreground)] text-base">
                         {card.title}
                       </h3>
-                      <p className="text-sm text-[var(--text-secondary)] mt-1">
+                      <p className="text-sm text-[var(--text-secondary)] mt-1 line-clamp-2">
                         {card.description}
                       </p>
                     </div>
                   </Card>
                 ))}
               </CardSwap>
+            </div>
+
+            {/* Mobile: Simple Grid (hidden on desktop) */}
+            <div className="md:hidden w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {cards.map((card, idx) => (
+                <div
+                  key={idx}
+                  className="bg-[var(--card-bg)] overflow-hidden rounded-xl border border-[var(--card-border)] shadow-sm"
+                >
+                  <div className="relative">
+                    {card.label && (
+                      <span className="absolute top-2 right-2 z-10 bg-[var(--ieee-blue)] text-white text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                        {card.label}
+                      </span>
+                    )}
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      loading="lazy"
+                      className="w-full h-28 object-cover"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="font-bold text-[var(--foreground)] text-sm">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs text-[var(--text-secondary)] mt-1 line-clamp-2">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

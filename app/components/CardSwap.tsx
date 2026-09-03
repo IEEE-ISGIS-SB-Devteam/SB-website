@@ -39,8 +39,8 @@ interface CardSwapProps {
   height?: number;
   cardDistance?: number;
   verticalDistance?: number;
-  delay?: number;          // base delay between swaps (ms)
-  speed?: number;          // multiplier (1 = normal, >1 = faster)
+  delay?: number;
+  speed?: number;
   pauseOnHover?: boolean;
   onCardClick?: (idx: number) => void;
   skewAmount?: number;
@@ -54,8 +54,8 @@ const CardSwap = ({
   height = 400,
   cardDistance = 60,
   verticalDistance = 70,
-  delay = 1500,            // was 5000 – now much faster
-  speed = 1.0,             // new prop – default 1x
+  delay = 1500,
+  speed = 1.0,
   pauseOnHover = false,
   onCardClick,
   skewAmount = 6,
@@ -63,7 +63,6 @@ const CardSwap = ({
   children,
   className = "",
 }: CardSwapProps) => {
-  // Scale all durations and delays by 1/speed
   const s = speed > 0 ? 1 / speed : 1;
 
   const config =
@@ -125,7 +124,7 @@ const CardSwap = ({
             duration: config.durMove,
             ease: config.ease,
           },
-          `promote+=${i * 0.5 * s}`   // stagger also scales with speed
+          `promote+=${i * 0.5 * s}`
         );
       });
 
@@ -152,7 +151,6 @@ const CardSwap = ({
     };
 
     swap();
-    // Apply speed to the interval delay as well
     const effectiveDelay = delay / speed;
     intervalRef.current = setInterval(swap, effectiveDelay);
 
@@ -177,19 +175,21 @@ const CardSwap = ({
     };
   }, [cardDistance, verticalDistance, delay, speed, pauseOnHover, skewAmount, easing, refs]);
 
-  const rendered = childArr.map((child, i) =>
-    isValidElement(child)
-      ? cloneElement(child, {
-          key: i,
-          ref: refs[i],
-          style: { width, height, ...(child.props.style ?? {}) },
-          onClick: (e: React.MouseEvent) => {
-            child.props.onClick?.(e);
-            onCardClick?.(i);
-          },
-        })
-      : child
-  );
+  // Fixed TypeScript errors here:
+  const rendered = childArr.map((child, i) => {
+    if (!isValidElement(child)) return child;
+    // Cast to ReactElement with any props to safely access .props
+    const childElement = child as React.ReactElement<any>;
+    return cloneElement(childElement, {
+      key: i,
+      ref: refs[i],
+      style: { width, height, ...(childElement.props.style ?? {}) },
+      onClick: (e: React.MouseEvent) => {
+        childElement.props.onClick?.(e);
+        onCardClick?.(i);
+      },
+    });
+  });
 
   return (
     <div

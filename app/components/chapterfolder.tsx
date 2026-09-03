@@ -25,7 +25,7 @@ export default function ChapterFolder({
 }: ChapterFolderProps) {
   const folderItems = stats.slice(0, 3).map((stat) => (
     <div key={stat.label} className="text-center">
-      <div className="text-base font-bold text-[var(--foreground)]">{stat.value}</div>
+      <div className="text-sm sm:text-base font-bold text-[var(--foreground)]">{stat.value}</div>
       <div className="text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
         {stat.label}
       </div>
@@ -33,30 +33,30 @@ export default function ChapterFolder({
   ));
 
   return (
-    <section className={`py-20 md:py-28 ${className}`}>
-      <div className="container mx-auto">
+    <section className={`py-12 md:py-20 ${className}`}>
+      <div className="container mx-auto px-4">
         <div
           className={`flex flex-col lg:flex-row ${
             reverse ? "lg:flex-row-reverse" : ""
-          } items-center gap-12 lg:gap-20`}
+          } items-center gap-10 lg:gap-20`}
         >
           {/* Text */}
-          <div className="lg:w-1/2 space-y-5">
-            <div className="flex items-center gap-4">
+          <div className="lg:w-1/2 space-y-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               {logo && (
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--ieee-blue)] flex-shrink-0 shadow-sm">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-[var(--ieee-blue)] flex-shrink-0 shadow-sm">
                   <img src={logo} alt={name} className="w-full h-full object-cover" />
                 </div>
               )}
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--foreground)]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)]">
                 {name}
               </h2>
             </div>
-            <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
               {description}
             </p>
             {socialLinks.length > 0 && (
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex flex-wrap gap-3 pt-1">
                 {socialLinks.map((link, idx) => (
                   <a
                     key={idx}
@@ -74,12 +74,12 @@ export default function ChapterFolder({
 
           {/* Folder */}
           <div className="lg:w-1/2 flex justify-center">
-            <div className="w-full max-w-[200px] aspect-square flex items-center justify-center">
+            <div className="w-full max-w-[140px] sm:max-w-[180px] md:max-w-[200px] aspect-square flex items-center justify-center">
               <Folder
                 color={folderColor}
-                size={2}
+                size={1.5}
                 items={folderItems}
-                className="scale-90 md:scale-100"
+                className="scale-75 sm:scale-90 md:scale-100"
               />
             </div>
           </div>

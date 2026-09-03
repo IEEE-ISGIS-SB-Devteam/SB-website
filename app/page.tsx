@@ -1,41 +1,48 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { generatePageMetadata } from "./lib/seo";
 import Hero from "./components/hero";
 import FeatureCards from "./components/featurecards";
 import ChapterFolder from "./components/chapterfolder";
 
-export const metadata = generatePageMetadata({
-  title: "IEEE ISGIS Student Branch",
-  description: "Learn about the IEEE ISGIS Student Branch – our mission, vision, and values.",
-  openGraph: {
-    title: "About IEEE ISGIS Student Branch",
-    description: "Learn about our community, history, and commitment to excellence.",
-  },
-});
+export default function HomePageClient() {
+  const [contentVisible, setContentVisible] = useState(false);
 
-export default function HomePage() {
+  // On desktop, show content immediately
+  useEffect(() => {
+    const checkMobile = () => {
+      if (window.innerWidth >= 768) {
+        setContentVisible(true);
+      }
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const cards = [
     {
       title: "Tech Symposium",
-      description: "Annual gathering of engineering minds.",
+      description: "Annual gathering of engineering minds with workshops, keynotes, and networking.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=300&fit=crop",
       label: "Chapter",
     },
     {
       title: "Women in Engineering",
-      description: "Empowering women in STEM.",
+      description: "Empowering women in STEM through mentorship, talks, and community events.",
       image: "https://images.unsplash.com/photo-1573164713988-8665fc963f8c?w=400&h=300&fit=crop",
       label: "WIE",
     },
     {
       title: "IEEExtreme",
-      description: "24-hour global coding competition.",
+      description: "24-hour global coding competition — team up and push your limits.",
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop",
       label: "Competition",
     },
     {
       title: "Robotics Workshop",
-      description: "Hands-on robotics for beginners.",
+      description: "Hands-on robotics for beginners, with practical projects and expert guidance.",
       image: "https://images.unsplash.com/photo-1527430253228-e93688616381?w=400&h=300&fit=crop",
       label: "Workshop",
     },
@@ -96,25 +103,32 @@ export default function HomePage() {
         subtitle="Student Branch • Institut Supérieur de Gestion Industrielle de Sfax"
         imageSrc="https://scontent.ftun8-1.fna.fbcdn.net/v/t39.30808-6/520233198_770344498840928_7646105731015414515_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x648&ctp=s1080x648&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=0xKlTUJV8XIQ7kNvwHndHLT&_nc_oc=AdoZUo3vf8V8jWc1JCNeg_Qeaj8Uj0P9z_gElBnMa_MfSuDlC6WJSgLEa-n3SrG2oig&_nc_zt=23&_nc_ht=scontent.ftun8-1.fna&_nc_gid=OnwnwiOVDaqSa_4v2yMWtQ&_nc_ss=7b2a8&oh=00_AQGK7cceaJ52SRkblVL3BOujisWvSMym6H83FS-u2BXcWw&oe=6A8D95FF"
         scrollHint="Explore"
+        onMobileComplete={() => setContentVisible(true)}
       >
-        <div className="mt-6 flex gap-4 flex-wrap justify-center">
+        <div className="mt-4 sm:mt-6 flex gap-3 sm:gap-4 flex-wrap justify-center px-4">
           <Link
             href="/join"
-            className="bg-[var(--ieee-blue)] text-white px-8 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition"
+            className="bg-[var(--ieee-blue)] text-white px-5 sm:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold hover:opacity-90 transition"
           >
             Join Us
           </Link>
           <Link
             href="/about"
-            className="border border-white/30 text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition"
+            className="border border-white/30 text-white px-5 sm:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold hover:bg-white/10 transition"
           >
             Learn More
           </Link>
         </div>
       </Hero>
 
-      {/* Main content – generous spacing */}
-      <div className="space-y-8 md:space-y-12">
+      <div
+        className={`container mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-20 transition-all duration-700 ease-in-out transform ${
+          contentVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8 pointer-events-none"
+        }`}
+        id="about-community"
+      >
         <FeatureCards
           title="About Our Community"
           description="From hackathons to professional development, we offer a wide range of activities that bring together students, engineers, and innovators. Learn about our mission and the specialized chapters that drive innovation."

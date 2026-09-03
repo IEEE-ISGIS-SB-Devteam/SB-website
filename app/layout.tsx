@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
@@ -12,8 +12,18 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
 });
 
-// Use the base metadata
-export const metadata: Metadata = baseMetadata;
+// Base metadata (without themeColor)
+export const metadata: Metadata = {
+  ...baseMetadata,
+  // Ensure themeColor is NOT here – it's moved to viewport below
+};
+
+// Viewport export – handles themeColor, width, initialScale
+export const viewport: Viewport = {
+  themeColor: "#00629B", // IEEE Blue
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,

@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 
 const SITE_NAME = "IEEE ISGIS Student Branch";
-const SITE_DESCRIPTION ="The official student branch of the Institut Supérieur de Gestion Industrielle de Sfax. Bridging technology, engineering, and innovation.";
-const SITE_URL = "https://ieee-isgis.vercel.app"; 
-const SITE_LOGO = "/ieee-logo.png"; // Place a logo image in public/
+const SITE_DESCRIPTION =
+  "The official student branch of the Institut Supérieur de Gestion Industrielle de Sfax. Bridging technology, engineering, and innovation.";
+const SITE_URL = "https://ieee-isgis.vercel.app";
+
+// Use IEEE’s official master brand logo if possible, or host your own.
+// The recommended approach is to download the IEEE logo from
+// https://brand-experience.ieee.org/ and place it in /public/ieee-logo.png
+const SITE_LOGO = "/ieee-logo.png";
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -59,10 +64,12 @@ export const baseMetadata: Metadata = {
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
     images: [SITE_LOGO],
-    site: "@IEEE_ISGIS", // Replace with your Twitter handle
+    site: "@IEEE_ISGIS",
     creator: "@IEEE_ISGIS",
   },
-  // Icons (favicon, apple touch, etc.)
+  // Icons – use IEEE’s official favicon set if you have it, otherwise generate.
+  // For official IEEE favicons, see:
+  // https://brand-experience.ieee.org/guidelines/digital/visual-identity/
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -71,10 +78,8 @@ export const baseMetadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-  // Theme color for browser UI
-  themeColor: "#00629B",
+  // ❌ themeColor removed – now in layout.tsx > viewport export
   manifest: "/site.webmanifest",
-  // Other useful meta
   category: "Technology",
   classification: "Student Organization",
 };
@@ -83,13 +88,10 @@ export const baseMetadata: Metadata = {
  * Helper to generate page‑specific metadata.
  * Merges page overrides with the base metadata.
  */
-export function generatePageMetadata(
-  overrides: Partial<Metadata>
-): Metadata {
+export function generatePageMetadata(overrides: Partial<Metadata>): Metadata {
   return {
     ...baseMetadata,
     ...overrides,
-    // Ensure openGraph and twitter are merged, not replaced
     openGraph: {
       ...baseMetadata.openGraph,
       ...(overrides.openGraph || {}),
