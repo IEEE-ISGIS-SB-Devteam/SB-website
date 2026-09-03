@@ -4,7 +4,7 @@ import Hero from "../components/hero";
 import BorderGlow from "../components/BorderGlow/BorderGlow";
 
 export const metadata = generatePageMetadata({
-  title: "About Us",
+  title: "ABOUT US",
   description: "Learn about the IEEE ISGIS Student Branch – our mission, vision, and values.",
   openGraph: {
     title: "About IEEE ISGIS Student Branch",
@@ -152,7 +152,7 @@ const TeamCard = ({
       {/* Content */}
       <div className="p-4 sm:p-5 space-y-2 sm:space-y-3 relative z-10">
         <div>
-          <h3 className="text-base sm:text-lg font-semibold text-[var(--foreground)] leading-tight break-words">
+          <h3 className="font-open-sans text-base font-bold sm:text-lg text-[var(--foreground)] leading-tight break-words">
             {name}
           </h3>
           <p className="text-xs sm:text-sm font-medium text-[var(--surface-card-blue)] break-words">
@@ -192,7 +192,7 @@ export default function AboutPage() {
   return (
     <>
       <Hero
-        title="About Us"
+        title="ABOUT US"
         subtitle="Who we are, what we stand for, and why we do what we do."
         imageSrc="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=900&fit=crop"
         scrollHint="Learn more"
@@ -216,7 +216,7 @@ export default function AboutPage() {
 
           <div className="md:w-3/4 lg:w-4/5 space-y-12">
             <section id="mission" className="scroll-mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
+              <h2 className="font-open-sans text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
                 Our Mission
               </h2>
               <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
@@ -228,7 +228,7 @@ export default function AboutPage() {
             </section>
 
             <section id="vision" className="scroll-mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
+              <h2 className="font-open-sans text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
                 Our Vision
               </h2>
               <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
@@ -238,7 +238,7 @@ export default function AboutPage() {
             </section>
 
             <section id="team" className="scroll-mt-20 pt-8 border-t border-[var(--card-border)]">
-              <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[var(--foreground)]">
+              <h2 className="font-open-sans text-2xl md:text-3xl font-bold mb-8 text-[var(--foreground)]">
                 Meet the Team
               </h2>
               <div className="grid grid-cols-2 gap-4 md:gap-8 lg:grid-cols-4">
@@ -260,7 +260,7 @@ export default function AboutPage() {
             </section>
 
             <section id="values" className="scroll-mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
+              <h2 className="font-open-sans text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
                 Values
               </h2>
               <ul className="list-disc pl-6 space-y-2 text-base md:text-lg text-[var(--text-secondary)]">
@@ -272,7 +272,7 @@ export default function AboutPage() {
             </section>
 
             <section id="history" className="scroll-mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
+              <h2 className="font-open-sans text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
                 A Brief History
               </h2>
               <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">

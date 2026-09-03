@@ -63,7 +63,7 @@ export default function EventsPage() {
   return (
     <>
       <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="text-4xl font-bold"><span className="text-(--ieee-blue)">Events</span></h1>
+        <h1 className="font-open-sans text-4xl font-bold"><span className="text-(--ieee-blue)">Events</span></h1>
         <p className="mt-2 text-(--text-secondary)">Past, current, and upcoming events organized by our student branch.</p>
         <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
       </section>

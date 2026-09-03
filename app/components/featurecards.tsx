@@ -34,7 +34,7 @@ export default function FeatureCards({
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
           {/* Left: Text & CTAs */}
           <div className="lg:w-1/2 space-y-4 sm:space-y-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-(--foreground)">
+            <h2 className="font-open-sans text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-(--foreground)">
               {title}
             </h2>
             <p className="text-base sm:text-lg text-(--text-secondary) leading-relaxed">
@@ -125,7 +125,7 @@ export default function FeatureCards({
                     />
                   </div>
                   <div className="p-3">
-                        <h3 className="font-bold text-(--foreground) text-sm">
+                        <h3 className="font-open-sans font-bold text-(--foreground) text-sm">
                       {card.title}
                     </h3>
                     <p className="text-xs text-(--text-secondary) mt-1 line-clamp-2">

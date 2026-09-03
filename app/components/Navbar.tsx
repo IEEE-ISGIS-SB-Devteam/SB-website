@@ -218,7 +218,7 @@ export default function Navbar() {
             </button>
             <Link
               href="/join"
-              className="group flex items-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover) whitespace-nowrap"
+              className="group flex items-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-4 py-2 font-open-sans text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover) whitespace-nowrap"
             >
               Join Us
               <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
@@ -322,7 +322,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/join"
-              className="group flex items-center justify-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-5 py-2 text-center text-sm font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover)"
+              className="group flex items-center justify-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-5 py-2 font-open-sans text-center text-sm font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover)"
               onClick={() => setMobileMenuOpen(false)}
             >
               Join Us

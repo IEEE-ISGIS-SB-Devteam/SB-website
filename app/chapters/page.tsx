@@ -13,13 +13,13 @@ export default function ChaptersPage() {
   return (
     <>
       <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="text-4xl font-bold">Chapters &amp; <span className="text-(--ieee-blue)">Affinity Groups</span></h1>
+        <h1 className="font-open-sans text-4xl font-bold">Chapters &amp; <span className="text-(--ieee-blue)">Affinity Groups</span></h1>
         <p className="mt-2 text-(--text-secondary)">Specialized communities within the IEEE ISGIS Student Branch.</p>
         <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
       </section>
 
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <h2 className="text-2xl font-bold mb-6">Our Chapters</h2>
+        <h2 className="font-open-sans text-2xl font-bold mb-6">Our Chapters</h2>
         <p className="text-(--text-secondary) leading-relaxed mb-6">
           IEEE ISGIS hosts several technical chapters and affinity groups that focus on specific
           areas of engineering and technology. These groups provide a platform for deeper exploration,
@@ -40,7 +40,7 @@ export default function ChaptersPage() {
           ))}
         </div>
 
-        <h2 className="text-2xl font-bold mt-12 mb-6">Affinity Groups</h2>
+        <h2 className="font-open-sans text-2xl font-bold mt-12 mb-6">Affinity Groups</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             { title: 'Women in Engineering (WIE)', lead: 'Lead: Amira Bouaziz', desc: 'Empowering women in STEM through mentorship, networking, and outreach.' },
