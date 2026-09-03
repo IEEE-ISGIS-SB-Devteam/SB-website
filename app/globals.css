@@ -401,10 +401,97 @@ html:not(.dark) .border-glow-card > .edge-light {
   color: var(--surface-card-text);
   font-size: 0.875rem;
   line-height: 1.55;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .event-card-shell .event-date-badge {
   background: var(--surface-card-blue-soft);
+}
+
+.event-learn-more,
+.event-back-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--surface-card-blue);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.event-learn-more:hover,
+.event-back-link:hover {
+  color: var(--ieee-blue);
+  text-decoration: underline;
+}
+
+.event-detail-shell {
+  margin-top: 1.5rem;
+}
+
+.event-detail-content {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.event-detail-image {
+  max-height: 34rem;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 1px solid var(--surface-card-image-border);
+}
+
+.event-detail-image img {
+  width: 100%;
+  max-height: 34rem;
+  object-fit: cover;
+}
+
+.event-detail-body {
+  position: relative;
+  padding: 1.5rem;
+}
+
+.event-detail-body h1 {
+  margin: 0 6rem 1rem 0;
+  color: var(--surface-card-title);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.event-detail-date {
+  margin-top: 0;
+}
+
+.event-detail-description {
+  margin: 1.5rem 0 0;
+  color: var(--surface-card-text);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.event-highlights {
+  margin-top: 2rem;
+  border-top: 1px solid var(--surface-card-border);
+  padding-top: 1.25rem;
+}
+
+.event-highlights h2 {
+  color: var(--surface-card-title);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.event-highlights ul {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+  color: var(--surface-card-text);
+  list-style: disc;
 }
 
 .team-card-overlay {

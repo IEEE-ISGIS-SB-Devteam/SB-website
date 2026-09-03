@@ -1,31 +1,7 @@
 import { generatePageMetadata } from "../lib/seo";
 import BorderGlow from "../components/BorderGlow/BorderGlow";
-
-type EventItem = {
-  title: string;
-  date: string;
-  desc: string;
-  image?: string;
-};
-
-const upcomingEvents: EventItem[] = [
-  { title: 'AI & Robotics Workshop', date: '15 Dec 2026 • 14:00–17:00', desc: 'Hands-on session covering fundamentals of AI and robotic control systems.' },
-  { title: 'IEEE ISGIS General Assembly', date: '10 Jan 2026 • 18:00', desc: 'Yearly general assembly — all members are invited to vote and propose new initiatives.' },
-  { title: 'Career & Networking Night', date: '22 Feb 2026 • 19:00', desc: 'Connect with industry professionals, alumni, and fellow students.' },
-];
-
-const pastEvents: EventItem[] = [
-  {title : 'IEEE ISGIS I2I Hackathon', date: 'March 2025 • 24 hours', desc: 'A 24-hour coding marathon where students developed innovative solutions to real-world problems.' , image: 'https://i.postimg.cc/jqWKFDvj/IMG-9730.jpg',},
-  { title: 'IEEExtreme 2025', date: 'Oct 2025', desc: 'Our teams ranked among the top 10% globally in this 24-hour coding marathon.' },
-  { title: 'Smart Grid Seminar', date: 'Sep 2025', desc: 'Expert talk on sustainable energy and smart grid technologies.' },
-  { title: 'Freshman Welcome Day', date: 'Sep 2025', desc: 'Welcoming new engineering students with a day of fun, learning, and networking.' },
-  {
-    title: 'TSYP 13',
-    date: '22–24 December 2025 • Medina Congress Center, Yasmine Hammamet',
-    desc: 'The 13th edition of the IEEE Tunisian Student and Young Professional Congress, hosted by IEEE ENIS Student Branch in collaboration with IEEE Tunisia Section — three days of workshops, challenges, and networking bringing together IEEE members from across Tunisia.',
-    image: 'https://i.postimg.cc/pTTSh2h0/IMG-9749.jpg',
-  },
-];
+import Link from "next/link";
+import { pastEvents, upcomingEvents, type EventItem, type EventStatus } from "../lib/events";
 
 function CalendarIcon() {
   return (
@@ -35,7 +11,7 @@ function CalendarIcon() {
   );
 }
 
-function EventCard({ event, status }: { event: EventItem; status: 'Upcoming' | 'Past' }) {
+function EventCard({ event, status }: { event: EventItem; status: EventStatus }) {
   return (
     <BorderGlow
       className={`event-card-shell ${status === 'Past' ? 'event-card-shell--past' : ''}`}
@@ -64,7 +40,10 @@ function EventCard({ event, status }: { event: EventItem; status: 'Upcoming' | '
             <CalendarIcon />
             <span>{event.date}</span>
           </p>
-          <p className="event-description">{event.desc}</p>
+          <p className="event-description">{event.description}</p>
+          <Link className="event-learn-more" href={`/events/${event.slug}`}>
+            Learn More <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </article>
     </BorderGlow>
