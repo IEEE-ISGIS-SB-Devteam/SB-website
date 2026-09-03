@@ -194,7 +194,7 @@ export default function AboutPage() {
       <Hero
         title="About Us"
         subtitle="Who we are, what we stand for, and why we do what we do."
-        imageSrc="/about-hero.jpg"
+        imageSrc="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=900&fit=crop"
         scrollHint="Learn more"
       />
 
