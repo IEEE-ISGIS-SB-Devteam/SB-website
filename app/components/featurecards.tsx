@@ -105,7 +105,7 @@ export default function FeatureCards({
             </div>
 
             {/* Mobile: Grid with full info */}
-            <div className="md:hidden w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="md:hidden w-full grid grid-cols-2 gap-3">
               {cards.map((card, idx) => (
                 <div
                   key={idx}

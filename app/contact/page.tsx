@@ -50,15 +50,15 @@ export default function ContactPage() {
             <form className="space-y-4">
               <div>
                 <label htmlFor="name" className="block font-medium mb-1">Name</label>
-                <input type="text" id="name" placeholder="Your name" className="w-full px-4 py-2 border border-(--card-border) rounded-lg bg-(--surface-input) text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
+                <input type="text" id="name" placeholder="Your name" className="theme-input w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
               </div>
               <div>
                 <label htmlFor="email" className="block font-medium mb-1">Email</label>
-                <input type="email" id="email" placeholder="you@example.com" className="w-full px-4 py-2 border border-(--card-border) rounded-lg bg-(--surface-input) text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
+                <input type="email" id="email" placeholder="you@example.com" className="theme-input w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
               </div>
               <div>
                 <label htmlFor="message" className="block font-medium mb-1">Message</label>
-                <textarea id="message" rows={4} placeholder="Your message..." className="w-full px-4 py-2 border border-(--card-border) rounded-lg bg-(--surface-input) text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue) resize-y"></textarea>
+                <textarea id="message" rows={4} placeholder="Your message..." className="theme-input w-full resize-y rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)"></textarea>
               </div>
               <button type="submit" className="bg-(--ieee-blue) text-white px-6 py-2 rounded-full font-semibold hover:bg-(--ieee-blue-hover) transition">
                 Send

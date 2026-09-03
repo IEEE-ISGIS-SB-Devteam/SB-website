@@ -24,6 +24,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     document.documentElement.style.colorScheme = theme;
+    document.body.style.setProperty(
+      "background-color",
+      theme === "dark" ? "#0a0a0a" : "#ffffff",
+      "important",
+    );
+
+    document.querySelectorAll<HTMLElement>(".theme-input").forEach((input) => {
+      input.style.setProperty("background-color", theme === "dark" ? "#1a1a1a" : "#f9fafb", "important");
+      input.style.setProperty("border-color", theme === "dark" ? "#2a2a2a" : "#e5e7eb", "important");
+      input.style.setProperty("color", theme === "dark" ? "#f1f5f9" : "#0a0a0a", "important");
+    });
   }, [theme]);
 
   useEffect(() => {

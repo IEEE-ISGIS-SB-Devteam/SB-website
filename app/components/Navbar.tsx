@@ -2,22 +2,30 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "./ThemeProvider";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
   const { theme, toggleTheme } = useTheme();
 
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const dropdownRef = useRef<HTMLElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
   // Close dropdown on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const insideDesktopDropdown = dropdownRef.current?.contains(target);
+      const insideMobileDropdown = mobileDropdownRef.current?.contains(target);
+
+      if (!insideDesktopDropdown && !insideMobileDropdown) {
         setDropdownOpen(false);
       }
     };
@@ -143,7 +151,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
+          <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-semibold uppercase tracking-[0.08em]">
             <li>
               <Link href="/" className="text-(--foreground) hover:text-(--ieee-blue) transition">
                 Home
@@ -203,16 +211,17 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 lg:gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-(--surface-subtle) transition text-lg lg:text-xl text-(--foreground)"
+              className="flex h-9 w-9 items-center justify-center border border-(--card-border) hover:border-(--ieee-blue) hover:text-(--ieee-blue) transition text-(--foreground)"
               aria-label="Toggle theme"
             >
-              {theme === "light" ? "🌙" : "☀️"}
+              <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} className="h-4 w-4" />
             </button>
             <Link
               href="/join"
-              className="bg-(--ieee-blue) text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold hover:bg-(--ieee-blue-hover) transition whitespace-nowrap"
+              className="group flex items-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover) whitespace-nowrap"
             >
               Join Us
+              <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
 
@@ -220,10 +229,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center gap-1">
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-full hover:bg-(--surface-subtle) transition text-lg text-(--foreground)"
+              className="flex h-9 w-9 items-center justify-center border border-(--card-border) hover:border-(--ieee-blue) hover:text-(--ieee-blue) transition text-(--foreground)"
               aria-label="Toggle theme"
             >
-              {theme === "light" ? "🌙" : "☀️"}
+              <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} className="h-4 w-4" />
             </button>
             <button
               className="flex flex-col gap-1 p-1.5"
@@ -254,22 +263,24 @@ export default function Navbar() {
             >
               About Us
             </Link>
-            <div>
+            <div ref={mobileDropdownRef}>
               <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-1 text-(--foreground) hover:text-(--ieee-blue) transition"
+                type="button"
+                aria-expanded={mobileDropdownOpen}
+                onClick={() => setMobileDropdownOpen((previous) => !previous)}
+                className="flex w-full items-center gap-1 py-1 text-left text-(--foreground) hover:text-(--ieee-blue) transition"
               >
                 Our Work <span className="text-xs">▾</span>
               </button>
-              {dropdownOpen && (
-                <ul className="pl-4 mt-2 space-y-2">
+              {mobileDropdownOpen && (
+                <ul className="mt-2 space-y-1 border-l border-(--card-border) pl-3">
                   <li>
                     <Link
                       href="/events"
-                      className="block text-(--foreground) hover:text-(--ieee-blue) transition"
+                      className="block py-2 text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        setDropdownOpen(false);
+                        setMobileDropdownOpen(false);
                       }}
                     >
                       Events
@@ -278,10 +289,10 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/awards"
-                      className="block text-(--foreground) hover:text-(--ieee-blue) transition"
+                      className="block py-2 text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        setDropdownOpen(false);
+                        setMobileDropdownOpen(false);
                       }}
                     >
                       Awards
@@ -290,10 +301,10 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/chapters"
-                      className="block text-(--foreground) hover:text-(--ieee-blue) transition"
+                      className="block py-2 text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        setDropdownOpen(false);
+                        setMobileDropdownOpen(false);
                       }}
                     >
                       Chapters &amp; Affinity Groups
@@ -311,10 +322,11 @@ export default function Navbar() {
             </Link>
             <Link
               href="/join"
-              className="block bg-(--ieee-blue) text-white text-center px-5 py-2 rounded-full text-sm font-semibold"
+              className="group flex items-center justify-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-5 py-2 text-center text-sm font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover)"
               onClick={() => setMobileMenuOpen(false)}
             >
               Join Us
+              <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
             </Link>
           </div>
         )}

@@ -41,7 +41,7 @@ export default function HomePageClient() {
         <img
           src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&h=900&fit=crop"
           alt="Students collaborating during an IEEE activity"
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-35"
+          className="landing-hero-image absolute inset-0 -z-10 opacity-35"
         />
         <div className="absolute inset-0 -z-10 bg-[#071b2b]/75" />
         <div className="container mx-auto px-4 py-20 sm:py-28 lg:py-36">
@@ -56,10 +56,10 @@ export default function HomePageClient() {
               A student community at the Higher Institute of Industrial Management of Sfax, connecting curious students with technology, mentorship, and meaningful projects.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/join" className="rounded-full bg-[#00a6d6] px-6 py-3 text-sm font-semibold text-white hover:bg-[#008db8]">
+              <Link href="/join" className="landing-action landing-action-primary">
                 Join the branch
               </Link>
-              <Link href="/about" className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10">
+              <Link href="/about" className="landing-action landing-action-secondary">
                 Discover IEEE ISGIS
               </Link>
             </div>
@@ -120,7 +120,7 @@ export default function HomePageClient() {
               Join IEEE ISGIS and find your next project, event, or opportunity to grow.
             </p>
           </div>
-          <Link href="/join" className="w-fit rounded-full bg-[#00a6d6] px-6 py-3 text-sm font-semibold text-white hover:bg-[#008db8]">
+          <Link href="/join" className="landing-action landing-action-primary w-fit">
             Become a member
           </Link>
         </div>
