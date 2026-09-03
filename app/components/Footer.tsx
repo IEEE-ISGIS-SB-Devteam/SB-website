@@ -54,7 +54,7 @@ export default function Footer() {
                   href="https://www.ieee.org/accessibility_statement.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-[#cccccc] hover:text-gray-900 dark:hover:text-white transition"
+                  className="text-gray-600 dark:text-[#7171c5] hover:text-green-900 dark:hover:text-white transition"
                 >
                   Accessibility
                 </a>
@@ -64,7 +64,7 @@ export default function Footer() {
                   href="https://www.ieee.org/about/corporate/governance/p9-26.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-[#cccccc] hover:text-gray-900 dark:hover:text-white transition"
+                  className="text-gray-600 dark:text-[#7171c5]  light:hover:text-green-900 dark:hover:text-white transition"
                 >
                   Nondiscrimination Policy
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                   href="http://www.ieee-ethics-reporting.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-[#cccccc] hover:text-gray-900 dark:hover:text-white transition"
+                  className="text-gray-600 dark:text-[#7171c5] hover:text-green-900 dark:hover:text-white transition"
                 >
                   IEEE Ethics Reporting
                 </a>
@@ -84,7 +84,7 @@ export default function Footer() {
                   href="https://www.ieee.org/about/help/site_terms_conditions.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-[#cccccc] hover:text-gray-900 dark:hover:text-white transition"
+                  className="text-gray-600 dark:text-[#7171c5] hover:text-green-900 dark:hover:text-white transition"
                 >
                   Terms &amp; Disclosures
                 </a>
@@ -94,7 +94,7 @@ export default function Footer() {
                   href="https://privacy.ieee.org/policies"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-[#cccccc] hover:text-gray-900 dark:hover:text-white transition"
+                  className="text-gray-600 dark:text-[#7171c5] hover:text-green-900 dark:hover:text-white transition"
                 >
                   IEEE Privacy Policy
                 </a>

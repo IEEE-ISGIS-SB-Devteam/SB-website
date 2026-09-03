@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="text-4xl font-bold"><span className="text-(--ieee-blue)">Contact</span> Us</h1>
+        <h1 className="font-open-sans text-4xl font-bold"><span className="text-(--ieee-blue)">Contact</span> Us</h1>
         <p className="mt-2 text-(--text-secondary)">We’d love to hear from you. Reach out with questions, ideas, or collaboration proposals.</p>
         <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
       </section>
@@ -22,7 +22,7 @@ export default function ContactPage() {
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
-            <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
+            <h2 className="font-open-sans text-2xl font-bold mb-4">Get in Touch</h2>
             <p className="text-(--text-secondary) leading-relaxed mb-6">
               The IEEE ISGIS Student Branch is here to support students, faculty, and industry
               partners. Whether you have a question, an idea, or want to collaborate — we are just a message away.
@@ -46,7 +46,7 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold mb-4">Send a Message</h2>
+            <h2 className="font-open-sans text-2xl font-bold mb-4">Send a Message</h2>
             <form className="space-y-4">
               <div>
                 <label htmlFor="name" className="block font-medium mb-1">Name</label>

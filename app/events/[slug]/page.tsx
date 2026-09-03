@@ -68,7 +68,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               <span className={`event-status-badge ${event.status === "Past" ? "event-status-badge--past" : ""}`}>
                 {event.status}
               </span>
-              <h1>{event.title}</h1>
+              <h1 className="font-open-sans font-bold">{event.title}</h1>
               <p className="event-detail-date event-date-badge">
                 <CalendarIcon />
                 <span>{event.date}</span>
@@ -76,7 +76,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               <p className="event-detail-description">{event.fullDescription}</p>
               {event.highlights && event.highlights.length > 0 && (
                 <section className="event-highlights" aria-labelledby="event-highlights-heading">
-                  <h2 id="event-highlights-heading">Highlights &amp; Results</h2>
+                  <h2 id="event-highlights-heading" className="font-open-sans font-bold">Highlights &amp; Results</h2>
                   <ul>
                     {event.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
                   </ul>

@@ -13,13 +13,13 @@ export default function AwardsPage() {
   return (
     <>
       <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="text-4xl font-bold"><span className="text-(--ieee-blue)">Awards</span> &amp; Recognition</h1>
+        <h1 className="font-open-sans text-4xl font-bold"><span className="text-(--ieee-blue)">Awards</span> &amp; Recognition</h1>
         <p className="mt-2 text-(--text-secondary)">Celebrating excellence and achievement within our student branch.</p>
         <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
       </section>
 
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <h2 className="text-2xl font-bold mb-4">Branch Awards</h2>
+        <h2 className="font-open-sans text-2xl font-bold mb-4">Branch Awards</h2>
         <p className="text-(--text-secondary) leading-relaxed mb-6">
           Every year, we recognize members and teams who have demonstrated outstanding
           contributions to the branch, technical excellence, and community leadership.

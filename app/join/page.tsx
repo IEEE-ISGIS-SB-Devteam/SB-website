@@ -14,13 +14,13 @@ export default function JoinPage() {
   return (
     <>
       <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="text-4xl font-bold">Join <span className="text-(--ieee-blue)">IEEE ISGIS</span></h1>
+        <h1 className="font-open-sans text-4xl font-bold">Join <span className="text-(--ieee-blue)">IEEE ISGIS</span></h1>
         <p className="mt-2 text-(--text-secondary)">Become part of a community that shapes the future of technology.</p>
         <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
       </section>
 
       <div className="container mx-auto px-4 py-12 max-w-3xl">
-        <h2 className="text-2xl font-bold mb-4">Why Join?</h2>
+        <h2 className="font-open-sans text-2xl font-bold mb-4">Why Join?</h2>
         <ul className="list-disc pl-6 space-y-2 text-(--text-secondary)">
           <li>Connect with like-minded engineering and technology students.</li>
           <li>Participate in workshops, hackathons, and technical competitions.</li>

@@ -84,7 +84,7 @@ export default function HomePageClient() {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
               IEEE Student Branch
             </p>
-            <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            <h1 className="font-open-sans text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Learn, build, and lead with IEEE ISGIS.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
@@ -120,7 +120,7 @@ export default function HomePageClient() {
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-(--ieee-blue)">
               Why get involved
             </p>
-            <h2 className="mt-3 text-2xl font-bold text-(--foreground) sm:text-3xl">
+            <h2 className="font-open-sans mt-3 text-2xl font-bold text-(--foreground) sm:text-3xl">
               Turn your interests into experience.
             </h2>
           </div>
@@ -150,7 +150,7 @@ export default function HomePageClient() {
       <section className="bg-[#071b2b] text-white">
         <div className="container mx-auto flex flex-col gap-6 px-4 py-12 sm:flex-row sm:items-center sm:justify-between md:py-16">
           <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold sm:text-3xl">Ready to take part?</h2>
+            <h2 className="font-open-sans text-2xl font-bold sm:text-3xl">Ready to take part?</h2>
             <p className="mt-2 text-sm leading-relaxed text-white/75 sm:text-base">
               Join IEEE ISGIS and find your next project, event, or opportunity to grow.
             </p>
@@ -167,7 +167,7 @@ export default function HomePageClient() {
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-(--ieee-blue)">
               Stay in the loop
             </p>
-            <h2 className="mt-2 text-2xl font-bold text-(--foreground) sm:text-3xl">
+            <h2 className="font-open-sans mt-2 text-2xl font-bold text-(--foreground) sm:text-3xl">
               Workshop and event updates, in your inbox.
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
