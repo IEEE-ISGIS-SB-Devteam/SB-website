@@ -45,45 +45,6 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
     <div className="event-detail-page">
       <div className="container mx-auto px-4 pt-10 md:pt-14 max-w-4xl">
         <Link className="event-back-link" href="/events">← Back to Events</Link>
-        <BorderGlow
-          className={event.status === "Past" ? "event-detail-shell event-card-shell--past" : "event-detail-shell"}
-          backgroundColor="var(--surface-card)"
-          borderRadius={16}
-          colors={["#3b82f6", "#60a5fa", "#1d4ed8"]}
-          glowColor="217 91% 60%"
-          animated={false}
-          glowIntensity={1.0}
-          edgeSensitivity={30}
-          coneSpread={25}
-          glowRadius={30}
-        >
-          <article className="event-detail-content">
-            {event.image && (
-              <div className="event-detail-image">
-                <img src={event.image} alt="" />
-              </div>
-            )}
-            <div className="event-detail-body">
-              <span className={`event-status-badge ${event.status === "Past" ? "event-status-badge--past" : ""}`}>
-                {event.status}
-              </span>
-              <h1 className="font-open-sans font-bold">{event.title}</h1>
-              <p className="event-detail-date event-date-badge">
-                <CalendarIcon />
-                <span>{event.date}</span>
-              </p>
-              <p className="event-detail-description">{event.fullDescription}</p>
-              {event.highlights && event.highlights.length > 0 && (
-                <section className="event-highlights" aria-labelledby="event-highlights-heading">
-                  <h2 id="event-highlights-heading" className="font-open-sans font-bold">Highlights &amp; Results</h2>
-                  <ul>
-                    {event.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-                  </ul>
-                </section>
-              )}
-            </div>
-          </article>
-        </BorderGlow>
       </div>
       {event.image && (
         <div className="event-detail-image">
@@ -93,7 +54,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
       <article className="event-detail-article container mx-auto px-4">
         <div className="event-detail-body">
           <div className="event-detail-heading-row">
-            <h1>{event.title}</h1>
+            <h1 className="font-open-sans font-bold">{event.title}</h1>
             <span className={`event-status-badge ${event.status === "Past" ? "event-status-badge--past" : ""}`}>
               {event.status}
             </span>
@@ -105,7 +66,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
           <p className="event-detail-description">{event.fullDescription}</p>
           {event.highlights && event.highlights.length > 0 && (
             <section className="event-highlights" aria-labelledby="event-highlights-heading">
-              <h2 id="event-highlights-heading">Highlights &amp; Results</h2>
+              <h2 id="event-highlights-heading" className="font-open-sans font-bold">Highlights &amp; Results</h2>
               <ul>
                 {event.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
               </ul>
