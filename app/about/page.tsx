@@ -1,6 +1,7 @@
 import { generatePageMetadata } from "../lib/seo";
 import React from "react";
 import Hero from "../components/hero";
+import BorderGlow from "../components/BorderGlow/BorderGlow";
 
 export const metadata = generatePageMetadata({
   title: "About Us",
@@ -22,48 +23,48 @@ const sections = [
 // Team members with social links
 const teamMembers = [
   {
-    name: "Ahmed Ben Salem",
+    name: "Khalil Neji",
     title: "Chair",
-    handle: "ahmed.bensalem",
+    handle: "khalil.neji",
     status: "Active",
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/ahmed",
-    github: "https://github.com/ahmed",
-    email: "mailto:ahmed@ieee-isgis.org",
-    facebook: "https://facebook.com/ahmed",
+    avatarUrl: "https://i.postimg.cc/VLkL4My9/2-(1).png",
+    linkedin: "https://www.linkedin.com/in/khalil-neji-36aaa5418/",
+    github: "https://github.com/khalil",
+    email: "khalilneji002@gmail.com",
+    facebook: "https://www.facebook.com/khalil.nejii",
   },
   {
-    name: "Mariam Kammoun",
+    name: "Melek Jrad",
     title: "Vice Chair",
-    handle: "mariam.kammoun",
+    handle: "melek.jrad",
     status: "Active",
-    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/mariam",
-    github: "https://github.com/mariam",
-    email: "mailto:mariam@ieee-isgis.org",
-    facebook: "https://facebook.com/mariam",
+    avatarUrl: "https://i.postimg.cc/nchcT787/3-(1).png",
+    linkedin: "https://www.linkedin.com/in/melek-jrad-51043933a/",
+    github: "https://github.com/melek",
+    email: "mailto:melek@ieee-isgis.org",
+    facebook: "https://www.facebook.com/king.007.4k",
   },
   {
-    name: "Yassine Gharbi",
-    title: "Treasurer",
-    handle: "yassine.gharbi",
+    name: "Rayen Baklouti",
+    title: "Webmaster",
+    handle: "rayen.baklouti",
     status: "Active",
-    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/yassine",
-    github: "https://github.com/yassine",
-    email: "mailto:yassine@ieee-isgis.org",
-    facebook: "https://facebook.com/yassine",
+    avatarUrl: "https://i.postimg.cc/bNwNLbX9/5.png",
+    linkedin: "https://linkedin.com/in/rayen",
+    github: "https://github.com/rayen",
+    email: "mailto:rayen@ieee-isgis.org",
+    facebook: "https://www.facebook.com/rayen.baklouti.806064",
   },
   {
-    name: "Nour Ayadi",
+    name: "Khadija Laadhar",
     title: "Secretary",
-    handle: "nour.ayadi",
+    handle: "khadija.laadhar",
     status: "Active",
-    avatarUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-    linkedin: "https://linkedin.com/in/nour",
-    github: "https://github.com/nour",
-    email: "mailto:nour@ieee-isgis.org",
-    facebook: "https://facebook.com/nour",
+    avatarUrl: "https://i.postimg.cc/sDgDKSFY/4-(1).png",
+    linkedin: "https://www.linkedin.com/in/khadija-laadhar-02560a3aa/",
+    github: "https://github.com/khadija",
+    email: "mailto:khadija@ieee-isgis.org",
+    facebook: "https://www.facebook.com/KadijaLaadhar",
   },
 ];
 
@@ -119,19 +120,23 @@ const TeamCard = ({
   ].filter((item) => item.url);
 
   return (
-    <div
-      className="group relative rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
-      style={{
-        backgroundColor: "var(--card-bg)",
-        border: "1px solid var(--card-border)",
-        boxShadow: "var(--shadow-md)",
-      }}
+    <BorderGlow
+      backgroundColor="#141414"
+      borderRadius={16}
+      colors={["#3b82f6", "#60a5fa", "#1d4ed8"]}
+      glowColor="217 91% 60%"
+      animated={false}
+      glowIntensity={1.0}
+      edgeSensitivity={30}
+      coneSpread={25}
+      glowRadius={30}
     >
+      <div className="group relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
       {/* Hover gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#00629B]/0 via-[#00629B]/0 to-[#00629B]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Avatar */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-gray-800">
         <img
           src={avatarUrl}
           alt={name}
@@ -178,7 +183,8 @@ const TeamCard = ({
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </BorderGlow>
   );
 };
 
