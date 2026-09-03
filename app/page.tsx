@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { generatePageMetadata } from "./lib/seo";
 import HomePageClient from "./page.client";
 

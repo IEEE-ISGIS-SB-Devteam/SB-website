@@ -105,7 +105,7 @@ const CardSwap = ({
       tlRef.current = tl;
 
       tl.to(elFront, {
-        y: "+=500",
+        y: `+=${height * 0.8}`,
         duration: config.durDrop,
         ease: config.ease,
       });
@@ -173,7 +173,7 @@ const CardSwap = ({
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [cardDistance, verticalDistance, delay, speed, pauseOnHover, skewAmount, easing, refs]);
+  }, [cardDistance, verticalDistance, delay, speed, pauseOnHover, skewAmount, easing, height, refs]);
 
   // Fixed TypeScript errors here:
   const rendered = childArr.map((child, i) => {

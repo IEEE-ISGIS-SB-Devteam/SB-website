@@ -131,7 +131,7 @@ const TeamCard = ({
       coneSpread={25}
       glowRadius={30}
     >
-      <div className="team-card-content group relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+      <div className="team-card-content group relative overflow-hidden">
       {/* Hover gradient overlay */}
       <div className="team-card-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -140,7 +140,7 @@ const TeamCard = ({
         <img
           src={avatarUrl}
           alt={name}
-          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover object-center"
           loading="lazy"
         />
         <div className="team-status-badge absolute top-2 right-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs">
@@ -194,7 +194,7 @@ export default function AboutPage() {
       <Hero
         title="About Us"
         subtitle="Who we are, what we stand for, and why we do what we do."
-        imageSrc="/about-hero.jpg"
+        imageSrc="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=900&fit=crop"
         scrollHint="Learn more"
       />
 
@@ -241,7 +241,7 @@ export default function AboutPage() {
               <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[var(--foreground)]">
                 Meet the Team
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              <div className="grid grid-cols-2 gap-4 md:gap-8 lg:grid-cols-4">
                 {teamMembers.map((member, index) => (
                   <TeamCard
                     key={index}

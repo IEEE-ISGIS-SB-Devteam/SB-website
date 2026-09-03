@@ -2,22 +2,30 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "./ThemeProvider";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
   const { theme, toggleTheme } = useTheme();
 
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const dropdownRef = useRef<HTMLElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
   // Close dropdown on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const insideDesktopDropdown = dropdownRef.current?.contains(target);
+      const insideMobileDropdown = mobileDropdownRef.current?.contains(target);
+
+      if (!insideDesktopDropdown && !insideMobileDropdown) {
         setDropdownOpen(false);
       }
     };
@@ -54,7 +62,7 @@ export default function Navbar() {
           showTopBar ? "max-h-10 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="w-full bg-black py-1.5">
+        <div className="w-full bg-[#111827] py-1.5 dark:bg-black">
           <div className="max-w-7xl mx-auto flex justify-between items-center px-3 md:px-4 flex-wrap">
             {/* Left-aligned links */}
             <div className="flex items-center gap-2 md:gap-5 flex-wrap">
@@ -129,44 +137,44 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/10">
+      <nav className="bg-(--background) border-b border-(--card-border)">
         <div className="container mx-auto px-3 sm:px-6 flex items-center justify-between h-14 sm:h-16">
           {/* Logo – properly constrained on mobile */}
-          <div className="flex items-center flex-shrink-0 max-w-[140px] sm:max-w-none">
-            <Link href="/" className="flex items-center">
+          <div className="flex h-8 w-[140px] flex-shrink-0 items-center overflow-hidden sm:h-12 sm:w-[220px]">
+            <Link href="/" className="flex h-full w-full items-center">
               <img
-                src="https://ieee.tn/wp-content/uploads/2024/06/cropped-section_logo-2.png"
+                src="https://i.postimg.cc/SNfyWwDL/Copie-de-Posts-(1)-Photoroom.png"
                 alt="IEEE|Tunisia"
-                className="h-6 sm:h-8 md:h-10 w-auto object-contain"
+                className="theme-logo h-auto w-auto max-h-full max-w-full object-contain"
               />
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
+          <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-semibold uppercase tracking-[0.08em]">
             <li>
-              <Link href="/" className="text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition">
+              <Link href="/" className="text-(--foreground) hover:text-(--ieee-blue) transition">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/about" className="text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition">
+              <Link href="/about" className="text-(--foreground) hover:text-(--ieee-blue) transition">
                 About Us
               </Link>
             </li>
             <li className="relative" ref={dropdownRef}>
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                className="flex items-center gap-1 text-(--foreground) hover:text-(--ieee-blue) transition"
               >
                 Our Work <span className="text-xs">▾</span>
               </button>
               {dropdownOpen && (
-                <ul className="absolute left-0 top-full mt-2 w-56 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 rounded-lg shadow-lg py-2">
+                <ul className="absolute left-0 top-full mt-2 w-56 bg-(--card-bg) border border-(--card-border) rounded-lg shadow-lg py-2">
                   <li>
                     <Link
                       href="/events"
-                      className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block px-4 py-2 text-(--foreground) hover:bg-(--surface-subtle) hover:text-(--ieee-blue) transition"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Events
@@ -175,7 +183,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/awards"
-                      className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block px-4 py-2 text-(--foreground) hover:bg-(--surface-subtle) hover:text-(--ieee-blue) transition"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Awards
@@ -184,7 +192,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/chapters"
-                      className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block px-4 py-2 text-(--foreground) hover:bg-(--surface-subtle) hover:text-(--ieee-blue) transition"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Chapters &amp; Affinity Groups
@@ -194,7 +202,7 @@ export default function Navbar() {
               )}
             </li>
             <li>
-              <Link href="/contact" className="text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition">
+              <Link href="/contact" className="text-(--foreground) hover:text-(--ieee-blue) transition">
                 Contact Us
               </Link>
             </li>
@@ -203,16 +211,17 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 lg:gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-lg lg:text-xl text-gray-700 dark:text-gray-200"
+              className="flex h-9 w-9 items-center justify-center border border-(--card-border) hover:border-(--ieee-blue) hover:text-(--ieee-blue) transition text-(--foreground)"
               aria-label="Toggle theme"
             >
-              {theme === "light" ? "🌙" : "☀️"}
+              <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} className="h-4 w-4" />
             </button>
             <Link
               href="/join"
-              className="bg-[#00629B] text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold hover:bg-[#004b78] transition whitespace-nowrap"
+              className="group flex items-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover) whitespace-nowrap"
             >
               Join Us
+              <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
 
@@ -220,56 +229,58 @@ export default function Navbar() {
           <div className="md:hidden flex items-center gap-1">
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-lg text-gray-700 dark:text-gray-200"
+              className="flex h-9 w-9 items-center justify-center border border-(--card-border) hover:border-(--ieee-blue) hover:text-(--ieee-blue) transition text-(--foreground)"
               aria-label="Toggle theme"
             >
-              {theme === "light" ? "🌙" : "☀️"}
+              <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} className="h-4 w-4" />
             </button>
             <button
               className="flex flex-col gap-1 p-1.5"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <span className="block w-5 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
-              <span className="block w-5 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
-              <span className="block w-5 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
+              <span className="block w-5 h-0.5 bg-(--foreground)"></span>
+              <span className="block w-5 h-0.5 bg-(--foreground)"></span>
+              <span className="block w-5 h-0.5 bg-(--foreground)"></span>
             </button>
           </div>
         </div>
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-white/10 px-4 py-4 space-y-3">
+          <div className="md:hidden bg-(--background) border-t border-(--card-border) px-4 py-4 space-y-3">
             <Link
               href="/"
-              className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+              className="block text-(--foreground) hover:text-(--ieee-blue) transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+              className="block text-(--foreground) hover:text-(--ieee-blue) transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               About Us
             </Link>
-            <div>
+            <div ref={mobileDropdownRef}>
               <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                type="button"
+                aria-expanded={mobileDropdownOpen}
+                onClick={() => setMobileDropdownOpen((previous) => !previous)}
+                className="flex w-full items-center gap-1 py-1 text-left text-(--foreground) hover:text-(--ieee-blue) transition"
               >
                 Our Work <span className="text-xs">▾</span>
               </button>
-              {dropdownOpen && (
-                <ul className="pl-4 mt-2 space-y-2">
+              {mobileDropdownOpen && (
+                <ul className="mt-2 space-y-1 border-l border-(--card-border) pl-3">
                   <li>
                     <Link
                       href="/events"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block py-2 text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        setDropdownOpen(false);
+                        setMobileDropdownOpen(false);
                       }}
                     >
                       Events
@@ -278,10 +289,10 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/awards"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block py-2 text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        setDropdownOpen(false);
+                        setMobileDropdownOpen(false);
                       }}
                     >
                       Awards
@@ -290,10 +301,10 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/chapters"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block py-2 text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        setDropdownOpen(false);
+                        setMobileDropdownOpen(false);
                       }}
                     >
                       Chapters &amp; Affinity Groups
@@ -304,17 +315,18 @@ export default function Navbar() {
             </div>
             <Link
               href="/contact"
-              className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+              className="block text-(--foreground) hover:text-(--ieee-blue) transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact Us
             </Link>
             <Link
               href="/join"
-              className="block bg-[#00629B] text-white text-center px-5 py-2 rounded-full text-sm font-semibold"
+              className="group flex items-center justify-center gap-2 border-b-2 border-(--ieee-blue) bg-(--ieee-blue) px-5 py-2 text-center text-sm font-bold uppercase tracking-[0.08em] text-white transition hover:bg-(--ieee-blue-hover)"
               onClick={() => setMobileMenuOpen(false)}
             >
               Join Us
+              <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
             </Link>
           </div>
         )}
