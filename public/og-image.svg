@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#071b2b"/>
+  <rect x="72" y="72" width="12" height="486" fill="#00a6d6"/>
+  <text x="132" y="220" fill="#7dd3fc" font-family="Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="5">IEEE STUDENT BRANCH</text>
+  <text x="132" y="330" fill="#ffffff" font-family="Arial, sans-serif" font-size="76" font-weight="700">IEEE ISGIS</text>
+  <text x="132" y="398" fill="#dbeafe" font-family="Arial, sans-serif" font-size="32">Institut Superieur de Gestion Industrielle de Sfax</text>
+  <text x="132" y="510" fill="#00a6d6" font-family="Arial, sans-serif" font-size="26" font-weight="700">LEARN. BUILD. LEAD.</text>
+</svg>

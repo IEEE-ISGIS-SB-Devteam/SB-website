@@ -1,0 +1,17 @@
+{
+  "name": "IEEE ISGIS Student Branch",
+  "short_name": "IEEE ISGIS",
+  "description": "The IEEE ISGIS Student Branch at the Institut Superieur de Gestion Industrielle de Sfax.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00629b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
@@ -14,6 +14,13 @@ const openSans = Open_Sans({
 
 // Use the base metadata
 export const metadata: Metadata = baseMetadata;
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
 
 export default function RootLayout({
   children,

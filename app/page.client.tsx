@@ -2,9 +2,44 @@
 
 
 import Link from "next/link";
+import { FormEvent, useState } from "react";
 import FeatureCards from "./components/featurecards";
 
 export default function HomePageClient() {
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleNewsletterSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (captchaAnswer.trim() !== "11") {
+      setNewsletterStatus("error");
+      return;
+    }
+
+    const scriptUrl = process.env.NEXT_PUBLIC_NEWSLETTER_SCRIPT_URL;
+    if (!scriptUrl) {
+      setNewsletterStatus("error");
+      return;
+    }
+
+    setNewsletterStatus("submitting");
+    try {
+      await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ email: newsletterEmail, source: "home-newsletter" }),
+      });
+      setNewsletterStatus("success");
+      setNewsletterEmail("");
+      setCaptchaAnswer("");
+    } catch {
+      setNewsletterStatus("error");
+    }
+  };
+
   const cards = [
     {
       title: "Tech Symposium",
@@ -123,6 +158,65 @@ export default function HomePageClient() {
           <Link href="/join" className="landing-action landing-action-primary w-fit">
             Become a member
           </Link>
+        </div>
+      </section>
+
+      <section className="border-t border-(--card-border) bg-(--surface-subtle)">
+        <div className="container mx-auto flex flex-col gap-6 px-4 py-12 md:flex-row md:items-center md:justify-between md:py-16">
+          <div className="max-w-xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-(--ieee-blue)">
+              Stay in the loop
+            </p>
+            <h2 className="mt-2 text-2xl font-bold text-(--foreground) sm:text-3xl">
+              Workshop and event updates, in your inbox.
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
+              Get practical news about workshops, competitions, chapter activities, and other IEEE ISGIS opportunities.
+            </p>
+          </div>
+          <div className="w-full max-w-md">
+            {newsletterStatus === "success" ? (
+              <p className="border border-(--card-border) bg-(--card-bg) px-4 py-3 text-sm font-semibold text-(--foreground)">
+                You are subscribed. Check your inbox for confirmation.
+              </p>
+            ) : (
+              <form className="space-y-3" onSubmit={handleNewsletterSubmit}>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+                  <input
+                    id="newsletter-email"
+                    type="email"
+                    required
+                    value={newsletterEmail}
+                    onChange={(event) => setNewsletterEmail(event.target.value)}
+                    placeholder="you@example.com"
+                    className="theme-input min-w-0 flex-1 rounded-none border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-(--ieee-blue)"
+                  />
+                  <button type="submit" disabled={newsletterStatus === "submitting"} className="landing-action landing-action-primary shrink-0 disabled:cursor-wait disabled:opacity-60">
+                    {newsletterStatus === "submitting" ? "Sending" : "Subscribe"}
+                  </button>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-(--text-secondary)">
+                  <label htmlFor="newsletter-captcha" className="whitespace-nowrap">Quick check: 7 + 4 =</label>
+                  <input
+                    id="newsletter-captcha"
+                    type="text"
+                    inputMode="numeric"
+                    required
+                    value={captchaAnswer}
+                    onChange={(event) => setCaptchaAnswer(event.target.value)}
+                    className="theme-input w-20 rounded-none border px-3 py-2 text-center outline-none focus:ring-2 focus:ring-(--ieee-blue)"
+                    aria-label="Answer to 7 plus 4"
+                  />
+                </div>
+                {newsletterStatus === "error" && (
+                  <p className="text-sm font-semibold text-red-600 dark:text-red-400">
+                    Check the answer and make sure the newsletter endpoint is configured.
+                  </p>
+                )}
+              </form>
+            )}
+          </div>
         </div>
       </section>
     </div>
