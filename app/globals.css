@@ -119,3 +119,21 @@ img {
 .animate-fade-up-out {
   animation: fadeUpOut 0.8s ease-in forwards;
 }
+
+@keyframes fadeUpIn {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUpOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-24px); }
+}
+
+.animate-fade-up-in {
+  animation: fadeUpIn 0.8s ease-out forwards;
+}
+
+.animate-fade-up-out {
+  animation: fadeUpOut 0.8s ease-in forwards;
+}

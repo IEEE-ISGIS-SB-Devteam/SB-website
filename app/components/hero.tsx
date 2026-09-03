@@ -12,7 +12,7 @@ interface HeroProps {
   children?: React.ReactNode;
   className?: string;
   minHeight?: string;
-  onMobileComplete?: () => void; // 🔔 called after mobile intro ends
+  onMobileComplete?: () => void; // 🔔 called when content should start fading in
 }
 
 export default function Hero({
@@ -45,17 +45,22 @@ export default function Hero({
     document.body.style.overflow = "hidden";
 
     const timer1 = setTimeout(() => setPhase("fade-in"), 50);
-    const timer2 = setTimeout(() => setPhase("fade-out"), 3000);
+    const timer2 = setTimeout(() => setPhase("fade-out"), 2800); // start fade-out earlier
     const timer3 = setTimeout(() => {
       setPhase("gone");
       document.body.style.overflow = "";
-      onMobileComplete?.(); // 👈 notify parent that intro is done
-    }, 4000);
+    }, 3800); // hide earlier
+
+    // 🟢 Call onMobileComplete at 2800ms – content starts fading up while welcome is still visible
+    const contentTimer = setTimeout(() => {
+      onMobileComplete?.();
+    }, 2800);
 
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
       clearTimeout(timer3);
+      clearTimeout(contentTimer);
       document.body.style.overflow = "";
     };
   }, [isMobile, onMobileComplete]);
