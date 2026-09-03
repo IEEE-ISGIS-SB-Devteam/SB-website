@@ -5,10 +5,7 @@ const SITE_DESCRIPTION =
   "The official student branch of the Institut Supérieur de Gestion Industrielle de Sfax. Bridging technology, engineering, and innovation.";
 const SITE_URL = "https://ieee-isgis.vercel.app";
 
-// Use IEEE’s official master brand logo if possible, or host your own.
-// The recommended approach is to download the IEEE logo from
-// https://brand-experience.ieee.org/ and place it in /public/ieee-logo.png
-const SITE_LOGO = "/ieee-logo.png";
+const SITE_LOGO = "/og-image.svg";
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -71,14 +68,9 @@ export const baseMetadata: Metadata = {
   // For official IEEE favicons, see:
   // https://brand-experience.ieee.org/guidelines/digital/visual-identity/
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-touch-icon.svg" }],
   },
-  // ❌ themeColor removed – now in layout.tsx > viewport export
   manifest: "/site.webmanifest",
   category: "Technology",
   classification: "Student Organization",
