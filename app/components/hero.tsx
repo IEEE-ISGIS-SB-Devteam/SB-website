@@ -65,8 +65,6 @@ export default function Hero({
     if (phase === "hidden") return null;
 
     const isVisible = phase === "visible";
-    const isFading = phase === "fading";
-
     const opacity = isVisible ? "opacity-100" : "opacity-0";
     const translate = isVisible ? "translate-y-0" : "-translate-y-6";
 
@@ -79,10 +77,18 @@ export default function Hero({
         `}
         style={{ pointerEvents: isVisible ? "auto" : "none" }}
       >
-        <div className="text-center px-4 max-w-md mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--foreground)]">
-            Welcome to IEEE ISGIS
-          </h1>
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="relative z-10 mx-auto max-w-md px-5 text-center text-white">
+          <h1 className="text-3xl font-bold sm:text-4xl">{title}</h1>
+          {subtitle && (
+            <p className="mt-3 text-base leading-relaxed text-white/90">{subtitle}</p>
+          )}
+          {children}
         </div>
       </div>
     );

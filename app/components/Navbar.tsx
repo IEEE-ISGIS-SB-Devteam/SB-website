@@ -54,7 +54,7 @@ export default function Navbar() {
           showTopBar ? "max-h-10 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="w-full bg-black py-1.5">
+        <div className="w-full bg-[#111827] py-1.5 dark:bg-black">
           <div className="max-w-7xl mx-auto flex justify-between items-center px-3 md:px-4 flex-wrap">
             {/* Left-aligned links */}
             <div className="flex items-center gap-2 md:gap-5 flex-wrap">
@@ -129,15 +129,15 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/10">
+      <nav className="bg-(--background) border-b border-(--card-border)">
         <div className="container mx-auto px-3 sm:px-6 flex items-center justify-between h-14 sm:h-16">
           {/* Logo – properly constrained on mobile */}
-          <div className="flex items-center flex-shrink-0 max-w-[140px] sm:max-w-none">
-            <Link href="/" className="flex items-center">
+          <div className="flex h-8 w-[140px] flex-shrink-0 items-center overflow-hidden sm:h-12 sm:w-[220px]">
+            <Link href="/" className="flex h-full w-full items-center">
               <img
-                src="https://ieee.tn/wp-content/uploads/2024/06/cropped-section_logo-2.png"
+                src="https://i.postimg.cc/SNfyWwDL/Copie-de-Posts-(1)-Photoroom.png"
                 alt="IEEE|Tunisia"
-                className="h-6 sm:h-8 md:h-10 w-auto object-contain"
+                className="theme-logo h-auto w-auto max-h-full max-w-full object-contain"
               />
             </Link>
           </div>
@@ -145,28 +145,28 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
             <li>
-              <Link href="/" className="text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition">
+              <Link href="/" className="text-(--foreground) hover:text-(--ieee-blue) transition">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/about" className="text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition">
+              <Link href="/about" className="text-(--foreground) hover:text-(--ieee-blue) transition">
                 About Us
               </Link>
             </li>
             <li className="relative" ref={dropdownRef}>
               <button
                 onClick={toggleDropdown}
-                className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                className="flex items-center gap-1 text-(--foreground) hover:text-(--ieee-blue) transition"
               >
                 Our Work <span className="text-xs">▾</span>
               </button>
               {dropdownOpen && (
-                <ul className="absolute left-0 top-full mt-2 w-56 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 rounded-lg shadow-lg py-2">
+                <ul className="absolute left-0 top-full mt-2 w-56 bg-(--card-bg) border border-(--card-border) rounded-lg shadow-lg py-2">
                   <li>
                     <Link
                       href="/events"
-                      className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block px-4 py-2 text-(--foreground) hover:bg-(--surface-subtle) hover:text-(--ieee-blue) transition"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Events
@@ -175,7 +175,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/awards"
-                      className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block px-4 py-2 text-(--foreground) hover:bg-(--surface-subtle) hover:text-(--ieee-blue) transition"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Awards
@@ -184,7 +184,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/chapters"
-                      className="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block px-4 py-2 text-(--foreground) hover:bg-(--surface-subtle) hover:text-(--ieee-blue) transition"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Chapters &amp; Affinity Groups
@@ -194,7 +194,7 @@ export default function Navbar() {
               )}
             </li>
             <li>
-              <Link href="/contact" className="text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition">
+              <Link href="/contact" className="text-(--foreground) hover:text-(--ieee-blue) transition">
                 Contact Us
               </Link>
             </li>
@@ -203,14 +203,14 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 lg:gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-lg lg:text-xl text-gray-700 dark:text-gray-200"
+              className="p-2 rounded-full hover:bg-(--surface-subtle) transition text-lg lg:text-xl text-(--foreground)"
               aria-label="Toggle theme"
             >
               {theme === "light" ? "🌙" : "☀️"}
             </button>
             <Link
               href="/join"
-              className="bg-[#00629B] text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold hover:bg-[#004b78] transition whitespace-nowrap"
+              className="bg-(--ieee-blue) text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold hover:bg-(--ieee-blue-hover) transition whitespace-nowrap"
             >
               Join Us
             </Link>
@@ -220,7 +220,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center gap-1">
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition text-lg text-gray-700 dark:text-gray-200"
+              className="p-1.5 rounded-full hover:bg-(--surface-subtle) transition text-lg text-(--foreground)"
               aria-label="Toggle theme"
             >
               {theme === "light" ? "🌙" : "☀️"}
@@ -230,26 +230,26 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <span className="block w-5 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
-              <span className="block w-5 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
-              <span className="block w-5 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
+              <span className="block w-5 h-0.5 bg-(--foreground)"></span>
+              <span className="block w-5 h-0.5 bg-(--foreground)"></span>
+              <span className="block w-5 h-0.5 bg-(--foreground)"></span>
             </button>
           </div>
         </div>
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-white/10 px-4 py-4 space-y-3">
+          <div className="md:hidden bg-(--background) border-t border-(--card-border) px-4 py-4 space-y-3">
             <Link
               href="/"
-              className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+              className="block text-(--foreground) hover:text-(--ieee-blue) transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+              className="block text-(--foreground) hover:text-(--ieee-blue) transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               About Us
@@ -257,7 +257,7 @@ export default function Navbar() {
             <div>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                className="flex items-center gap-1 text-(--foreground) hover:text-(--ieee-blue) transition"
               >
                 Our Work <span className="text-xs">▾</span>
               </button>
@@ -266,7 +266,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/events"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setDropdownOpen(false);
@@ -278,7 +278,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/awards"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setDropdownOpen(false);
@@ -290,7 +290,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/chapters"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+                      className="block text-(--foreground) hover:text-(--ieee-blue) transition"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         setDropdownOpen(false);
@@ -304,14 +304,14 @@ export default function Navbar() {
             </div>
             <Link
               href="/contact"
-              className="block text-gray-700 dark:text-gray-200 hover:text-[#00629B] dark:hover:text-[#00629B] transition"
+              className="block text-(--foreground) hover:text-(--ieee-blue) transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact Us
             </Link>
             <Link
               href="/join"
-              className="block bg-[#00629B] text-white text-center px-5 py-2 rounded-full text-sm font-semibold"
+              className="block bg-(--ieee-blue) text-white text-center px-5 py-2 rounded-full text-sm font-semibold"
               onClick={() => setMobileMenuOpen(false)}
             >
               Join Us
