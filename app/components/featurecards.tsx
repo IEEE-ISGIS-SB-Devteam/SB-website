@@ -15,6 +15,7 @@ interface FeatureCardsProps {
     description: string;
     image: string;
     label?: string;
+    link?: string;
   }[];
 }
 
@@ -59,9 +60,9 @@ export default function FeatureCards({
             </div>
           </div>
 
-          {/* Right: Card Stack – Desktop: CardSwap, Mobile: Grid */}
+          {/* Right: Card Stack */}
           <div className="lg:w-1/2 flex justify-center w-full">
-            {/* Desktop: CardSwap (hidden on mobile) */}
+            {/* Desktop: CardSwap – images only, clickable */}
             <div className="hidden md:block w-full max-w-sm md:max-w-md aspect-[4/3]">
               <CardSwap
                 width={380}
@@ -74,36 +75,36 @@ export default function FeatureCards({
                 easing="elastic"
                 className="w-full h-full"
               >
-                {cards.map((card, idx) => (
-                  <Card
-                    key={idx}
-                    className="bg-[var(--card-bg)] overflow-hidden rounded-2xl border border-[var(--card-border)] shadow-[var(--shadow-md)]"
-                  >
-                    <div className="w-full h-full flex flex-col p-4 relative">
-                      {card.label && (
-                        <span className="absolute top-3 right-3 z-10 bg-[var(--ieee-blue)] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                          {card.label}
-                        </span>
-                      )}
+                {cards.map((card, idx) => {
+                  const imageElement = (
+                    <div className="w-full h-full overflow-hidden rounded-2xl border border-[var(--card-border)] shadow-[var(--shadow-md)] bg-[var(--card-bg)]">
                       <img
                         src={card.image}
                         alt={card.title}
                         loading="lazy"
-                        className="w-full h-32 object-cover rounded-xl mb-3"
+                        className="w-full h-full object-cover hover:scale-105 transition duration-500"
                       />
-                      <h3 className="font-bold text-[var(--foreground)] text-base">
-                        {card.title}
-                      </h3>
-                      <p className="text-sm text-[var(--text-secondary)] mt-1 line-clamp-2">
-                        {card.description}
-                      </p>
                     </div>
-                  </Card>
-                ))}
+                  );
+                  return (
+                    <Card
+                      key={idx}
+                      className="bg-[var(--card-bg)] overflow-hidden rounded-2xl border border-[var(--card-border)] shadow-[var(--shadow-md)]"
+                    >
+                      {card.link ? (
+                        <Link href={card.link} className="block w-full h-full">
+                          {imageElement}
+                        </Link>
+                      ) : (
+                        imageElement
+                      )}
+                    </Card>
+                  );
+                })}
               </CardSwap>
             </div>
 
-            {/* Mobile: Simple Grid (hidden on desktop) */}
+            {/* Mobile: Grid with full info */}
             <div className="md:hidden w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
               {cards.map((card, idx) => (
                 <div
