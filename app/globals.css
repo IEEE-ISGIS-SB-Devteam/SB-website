@@ -89,7 +89,9 @@ img {
 .hero, .folder, .card-swap {
   transition: none;
 }
-/* ─── Mobile Hero Animations ─── */
+
+
+/* Mobile Hero Fade Animations */
 @keyframes fadeUpIn {
   0% {
     opacity: 0;
@@ -119,6 +121,7 @@ img {
 .animate-fade-up-out {
   animation: fadeUpOut 0.8s ease-in forwards;
 }
+
 
 
 .border-glow-card {

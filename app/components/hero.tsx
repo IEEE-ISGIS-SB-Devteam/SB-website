@@ -12,7 +12,7 @@ interface HeroProps {
   children?: React.ReactNode;
   className?: string;
   minHeight?: string;
-  onMobileComplete?: () => void; // 🔔 called when content should start fading in
+  onMobileComplete?: () => void;
 }
 
 export default function Hero({
@@ -27,9 +27,8 @@ export default function Hero({
   onMobileComplete,
 }: HeroProps) {
   const [isMobile, setIsMobile] = useState(false);
-  const [phase, setPhase] = useState<"hidden" | "fade-in" | "fade-out" | "gone">("hidden");
+  const [phase, setPhase] = useState<"visible" | "fading" | "hidden">("visible");
 
-  // Detect mobile
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -37,53 +36,51 @@ export default function Hero({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Mobile sequence
   useEffect(() => {
     if (!isMobile) return;
 
     // Lock scroll
     document.body.style.overflow = "hidden";
 
-    const timer1 = setTimeout(() => setPhase("fade-in"), 50);
-    const timer2 = setTimeout(() => setPhase("fade-out"), 2800); // start fade-out earlier
-    const timer3 = setTimeout(() => {
-      setPhase("gone");
-      document.body.style.overflow = "";
-    }, 3800); // hide earlier
-
-    // 🟢 Call onMobileComplete at 2800ms – content starts fading up while welcome is still visible
-    const contentTimer = setTimeout(() => {
-      onMobileComplete?.();
+    // Start fade‑out after 2.8s
+    const fadeOutTimer = setTimeout(() => {
+      setPhase("fading");
     }, 2800);
 
+    // After 3.8s, hide completely and unlock scroll
+    const hideTimer = setTimeout(() => {
+      setPhase("hidden");
+      document.body.style.overflow = "";
+      onMobileComplete?.(); // 👈 notify parent AFTER hiding
+    }, 3800);
+
     return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(contentTimer);
+      clearTimeout(fadeOutTimer);
+      clearTimeout(hideTimer);
       document.body.style.overflow = "";
     };
   }, [isMobile, onMobileComplete]);
 
-  // ── MOBILE ──
   if (isMobile) {
-    if (phase === "gone") return null;
+    if (phase === "hidden") return null;
 
-    let animationClass = "";
-    if (phase === "fade-in") animationClass = "animate-fade-up-in";
-    else if (phase === "fade-out") animationClass = "animate-fade-up-out";
+    const isVisible = phase === "visible";
+    const isFading = phase === "fading";
+
+    const opacity = isVisible ? "opacity-100" : "opacity-0";
+    const translate = isVisible ? "translate-y-0" : "-translate-y-6";
 
     return (
       <div
-        className={`relative w-full flex flex-col items-center justify-center overflow-hidden ${className}`}
-        style={{ minHeight, height: "auto" }}
+        className={`
+          absolute inset-x-0 top-0 w-full h-screen flex flex-col items-center justify-center
+          transition-all duration-700 ease-in-out
+          ${opacity} ${translate}
+        `}
+        style={{ pointerEvents: isVisible ? "auto" : "none" }}
       >
         <div className="text-center px-4 max-w-md mx-auto">
-          <h1
-            className={`text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--foreground)] ${
-              phase === "hidden" ? "opacity-0" : animationClass
-            }`}
-          >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--foreground)]">
             Welcome to IEEE ISGIS
           </h1>
         </div>
@@ -91,7 +88,7 @@ export default function Hero({
     );
   }
 
-  // ── DESKTOP ──
+  // ── Desktop ──
   return (
     <div className={`relative w-full ${className}`} style={{ minHeight, height: "auto" }}>
       <ScrollExpand
