@@ -121,7 +121,7 @@ const TeamCard = ({
 
   return (
     <BorderGlow
-      backgroundColor="#141414"
+      backgroundColor="var(--surface-card)"
       borderRadius={16}
       colors={["#3b82f6", "#60a5fa", "#1d4ed8"]}
       glowColor="217 91% 60%"
@@ -131,19 +131,19 @@ const TeamCard = ({
       coneSpread={25}
       glowRadius={30}
     >
-      <div className="group relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+      <div className="team-card-content group relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
       {/* Hover gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#00629B]/0 via-[#00629B]/0 to-[#00629B]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="team-card-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Avatar */}
-      <div className="relative aspect-[4/3] overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-gray-800">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-t-2xl border-b border-[var(--surface-card-image-border)] bg-gray-100 dark:bg-gray-800">
         <img
           src={avatarUrl}
           alt={name}
           className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-        <div className="absolute top-2 right-2 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] sm:text-xs text-white">
+        <div className="team-status-badge absolute top-2 right-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
           {status}
         </div>
@@ -155,7 +155,7 @@ const TeamCard = ({
           <h3 className="text-base sm:text-lg font-semibold text-[var(--foreground)] leading-tight break-words">
             {name}
           </h3>
-          <p className="text-xs sm:text-sm font-medium text-[#00629B] dark:text-[#4a9eff] break-words">
+          <p className="text-xs sm:text-sm font-medium text-[var(--surface-card-blue)] break-words">
             {title}
           </p>
         </div>
@@ -174,7 +174,7 @@ const TeamCard = ({
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 rounded-full text-[var(--text-secondary)] hover:text-[#00629B] hover:bg-[#00629B]/10 transition-colors duration-200"
+                className="team-card-social p-1.5 rounded-full text-[var(--text-secondary)] transition-colors duration-200"
                 aria-label={label}
               >
                 {React.cloneElement(icon, { className: "w-4 h-4 sm:w-5 sm:h-5" })}

@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 :root {
@@ -18,6 +19,15 @@ html {
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
   --shadow-lg: 0 12px 32px rgba(0,0,0,0.10);
+  --surface-card: #ffffff;
+  --surface-card-border: rgb(0 0 0 / 10%);
+  --surface-card-title: #0a0a0a;
+  --surface-card-text: #4b5563;
+  --surface-card-muted: #64748b;
+  --surface-card-blue: #2563eb;
+  --surface-card-blue-soft: rgb(37 99 235 / 8%);
+  --surface-card-past: #64748b;
+  --surface-card-image-border: rgb(0 0 0 / 12%);
 }
 
 /* Dark mode – deep and sophisticated */
@@ -31,6 +41,15 @@ html.dark {
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
   --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
+  --surface-card: #141414;
+  --surface-card-border: rgb(255 255 255 / 15%);
+  --surface-card-title: #f1f5f9;
+  --surface-card-text: #94a3b8;
+  --surface-card-muted: #94a3b8;
+  --surface-card-blue: #60a5fa;
+  --surface-card-blue-soft: rgb(96 165 250 / 12%);
+  --surface-card-past: #94a3b8;
+  --surface-card-image-border: rgb(255 255 255 / 18%);
 }
 
 
@@ -44,6 +63,7 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 /* Consistent spacing and text sizing for mobile */
@@ -256,10 +276,173 @@ img {
     0 0 50px 2px var(--glow-color-10, hsl(40deg 80% 80% / 10%));
 }
 
+html:not(.dark) .border-glow-card {
+  border-color: var(--surface-card-border);
+}
+
+html:not(.dark) .border-glow-card::after,
+html:not(.dark) .border-glow-card > .edge-light {
+  mix-blend-mode: normal;
+}
+
 .border-glow-inner {
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: auto;
   z-index: 1;
+}
+
+.events-section + .events-section {
+  margin-top: 3rem;
+}
+
+.events-section-heading {
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.event-card-shell {
+  min-width: 0;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.event-card-shell:hover {
+  transform: translate3d(0, -4px, 0.01px);
+}
+
+.event-card-shell--past {
+  opacity: 0.85;
+}
+
+.event-card-content {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.event-card-image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 1px solid var(--surface-card-image-border);
+}
+
+.event-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-card-body {
+  position: relative;
+  padding: 1.25rem;
+}
+
+.event-card-body h3 {
+  margin: 0 5.5rem 0.75rem 0;
+  color: var(--surface-card-title);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.event-status-badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  border: 1px solid var(--surface-card-blue);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  color: var(--surface-card-blue);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.event-status-badge--past {
+  border-color: var(--surface-card-past);
+  color: var(--surface-card-past);
+}
+
+.event-date-badge {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  max-width: 100%;
+  margin: 0;
+  border: 1px solid var(--surface-card-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem;
+  color: var(--surface-card-muted);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.event-date-badge svg {
+  flex: 0 0 auto;
+  margin-top: 0.05rem;
+  color: var(--surface-card-blue);
+}
+
+.event-description {
+  margin: 0.75rem 0 0;
+  color: var(--surface-card-text);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.event-card-shell .event-date-badge {
+  background: var(--surface-card-blue-soft);
+}
+
+.team-card-overlay {
+  background: linear-gradient(to bottom right, transparent, transparent, var(--surface-card-blue-soft));
+}
+
+.team-card-social:hover {
+  color: var(--surface-card-blue);
+  background: var(--surface-card-blue-soft);
+}
+
+.team-status-badge {
+  border: 1px solid var(--surface-card-border);
+  background: var(--surface-card-blue-soft);
+  color: var(--surface-card-title);
+  backdrop-filter: blur(8px);
+}
+
+@media (min-width: 640px) {
+  .events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .events-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .events-section + .events-section {
+    margin-top: 2.25rem;
+  }
+
+  .events-section-heading {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .events-grid {
+    gap: 1rem;
+  }
 }

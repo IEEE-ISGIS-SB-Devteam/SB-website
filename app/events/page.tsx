@@ -1,4 +1,75 @@
 import { generatePageMetadata } from "../lib/seo";
+import BorderGlow from "../components/BorderGlow/BorderGlow";
+
+type EventItem = {
+  title: string;
+  date: string;
+  desc: string;
+  image?: string;
+};
+
+const upcomingEvents: EventItem[] = [
+  { title: 'AI & Robotics Workshop', date: '15 Dec 2026 • 14:00–17:00', desc: 'Hands-on session covering fundamentals of AI and robotic control systems.' },
+  { title: 'IEEE ISGIS General Assembly', date: '10 Jan 2026 • 18:00', desc: 'Yearly general assembly — all members are invited to vote and propose new initiatives.' },
+  { title: 'Career & Networking Night', date: '22 Feb 2026 • 19:00', desc: 'Connect with industry professionals, alumni, and fellow students.' },
+];
+
+const pastEvents: EventItem[] = [
+  {title : 'IEEE ISGIS I2I Hackathon', date: 'March 2025 • 24 hours', desc: 'A 24-hour coding marathon where students developed innovative solutions to real-world problems.' , image: 'https://i.postimg.cc/jqWKFDvj/IMG-9730.jpg',},
+  { title: 'IEEExtreme 2025', date: 'Oct 2025', desc: 'Our teams ranked among the top 10% globally in this 24-hour coding marathon.' },
+  { title: 'Smart Grid Seminar', date: 'Sep 2025', desc: 'Expert talk on sustainable energy and smart grid technologies.' },
+  { title: 'Freshman Welcome Day', date: 'Sep 2025', desc: 'Welcoming new engineering students with a day of fun, learning, and networking.' },
+  {
+    title: 'TSYP 13',
+    date: '22–24 December 2025 • Medina Congress Center, Yasmine Hammamet',
+    desc: 'The 13th edition of the IEEE Tunisian Student and Young Professional Congress, hosted by IEEE ENIS Student Branch in collaboration with IEEE Tunisia Section — three days of workshops, challenges, and networking bringing together IEEE members from across Tunisia.',
+    image: 'https://i.postimg.cc/pTTSh2h0/IMG-9749.jpg',
+  },
+];
+
+function CalendarIcon() {
+  return (
+    <svg aria-hidden="true" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" />
+    </svg>
+  );
+}
+
+function EventCard({ event, status }: { event: EventItem; status: 'Upcoming' | 'Past' }) {
+  return (
+    <BorderGlow
+      className={`event-card-shell ${status === 'Past' ? 'event-card-shell--past' : ''}`}
+      backgroundColor="var(--surface-card)"
+      borderRadius={16}
+      colors={["#3b82f6", "#60a5fa", "#1d4ed8"]}
+      glowColor="217 91% 60%"
+      animated={false}
+      glowIntensity={1.0}
+      edgeSensitivity={30}
+      coneSpread={25}
+      glowRadius={30}
+    >
+      <article className="event-card-content">
+        {event.image && (
+          <div className="event-card-image">
+            <img src={event.image} alt="" loading="lazy" />
+          </div>
+        )}
+        <div className="event-card-body">
+          <span className={`event-status-badge ${status === 'Past' ? 'event-status-badge--past' : ''}`}>
+            {status}
+          </span>
+          <h3>{event.title}</h3>
+          <p className="event-date-badge">
+            <CalendarIcon />
+            <span>{event.date}</span>
+          </p>
+          <p className="event-description">{event.desc}</p>
+        </div>
+      </article>
+    </BorderGlow>
+  );
+}
 
 // Page-specific metadata
 export const metadata = generatePageMetadata({
@@ -19,35 +90,19 @@ export default function EventsPage() {
       </section>
 
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <h2 className="text-2xl font-bold mb-6">Upcoming Events</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: 'AI & Robotics Workshop', date: '15 Dec 2026 • 14:00–17:00', desc: 'Hands-on session covering fundamentals of AI and robotic control systems.' },
-            { title: 'IEEE ISGIS General Assembly', date: '10 Jan 2026 • 18:00', desc: 'Yearly general assembly — all members are invited to vote and propose new initiatives.' },
-            { title: 'Career & Networking Night', date: '22 Feb 2026 • 19:00', desc: 'Connect with industry professionals, alumni, and fellow students.' },
-          ].map((event, i) => (
-            <div key={i} className="border border-black/10 dark:border-white/10 rounded-xl p-5 hover:border-[#00629B] transition">
-              <h4 className="font-semibold">{event.title}</h4>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{event.date}</p>
-              <p className="text-sm mt-1">{event.desc}</p>
-            </div>
-          ))}
-        </div>
+        <section aria-labelledby="upcoming-events-heading" className="events-section">
+          <h2 id="upcoming-events-heading" className="events-section-heading">Upcoming Events</h2>
+          <div className="events-grid">
+            {upcomingEvents.map((event) => <EventCard key={event.title} event={event} status="Upcoming" />)}
+          </div>
+        </section>
 
-        <h2 className="text-2xl font-bold mt-12 mb-6">Past Events</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: 'IEEExtreme 2025', date: 'Oct 2025', desc: 'Our teams ranked among the top 10% globally in this 24-hour coding marathon.' },
-            { title: 'Smart Grid Seminar', date: 'Sep 2025', desc: 'Expert talk on sustainable energy and smart grid technologies.' },
-            { title: 'Freshman Welcome Day', date: 'Sep 2025', desc: 'Welcoming new engineering students with a day of fun, learning, and networking.' },
-          ].map((event, i) => (
-            <div key={i} className="border border-black/10 dark:border-white/10 rounded-xl p-5 hover:border-[#00629B] transition">
-              <h4 className="font-semibold">{event.title}</h4>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{event.date}</p>
-              <p className="text-sm mt-1">{event.desc}</p>
-            </div>
-          ))}
-        </div>
+        <section aria-labelledby="past-events-heading" className="events-section events-section--past">
+          <h2 id="past-events-heading" className="events-section-heading">Past Events</h2>
+          <div className="events-grid">
+            {pastEvents.map((event) => <EventCard key={event.title} event={event} status="Past" />)}
+          </div>
+        </section>
       </div>
     </>
   );
