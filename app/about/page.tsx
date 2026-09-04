@@ -193,10 +193,11 @@ export default function AboutPage() {
     <>
       <Hero
         title="ABOUT US"
-        subtitle="Who we are, what we stand for, and why we do what we do."
+        subtitle={<>Who we are, what we stand for, <br /> and why we do what we do.</>}
         imageSrc="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=900&fit=crop"
         scrollHint="Learn more"
       />
+
 
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16">

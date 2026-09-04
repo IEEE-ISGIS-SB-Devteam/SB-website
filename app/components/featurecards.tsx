@@ -44,7 +44,7 @@ export default function FeatureCards({
               {ctaText && ctaLink && (
                 <Link
                   href={ctaLink}
-                  className="bg-(--ieee-blue) text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:opacity-90 transition shadow-sm"
+                  className="bg-(--ieee-blue) text-white px-6 sm:px-8 py-2.5 sm:py-3  text-sm sm:text-base font-semibold hover:opacity-90 transition shadow-sm"
                 >
                   {ctaText}
                 </Link>
@@ -52,7 +52,7 @@ export default function FeatureCards({
               {ctaSecondaryText && ctaSecondaryLink && (
                 <Link
                   href={ctaSecondaryLink}
-                  className="border border-(--card-border) text-(--foreground) px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-(--card-border)/20 transition"
+                  className="border border-(--card-border) text-(--foreground) px-6 sm:px-8 py-2.5 sm:py-3  text-sm sm:text-base font-semibold hover:bg-(--card-border)/20 transition"
                 >
                   {ctaSecondaryText}
                 </Link>
@@ -82,7 +82,7 @@ export default function FeatureCards({
                         src={card.image}
                         alt={card.title}
                         loading="lazy"
-                        className="w-full h-full object-cover hover:scale-105 transition duration-500"
+                        className="h-full w-full object-contain object-center hover:scale-105 transition duration-500"
                       />
                     </div>
                   );
@@ -121,7 +121,7 @@ export default function FeatureCards({
                       src={card.image}
                       alt={card.title}
                       loading="lazy"
-                      className="w-full h-28 object-cover"
+                      className="aspect-[4/3] w-full object-contain object-center"
                     />
                   </div>
                   <div className="p-3">

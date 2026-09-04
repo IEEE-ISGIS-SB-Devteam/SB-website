@@ -30,13 +30,13 @@ export default function Hero({
         <img
           src={imageSrc}
           alt={imageAlt}
-          className="mobile-hero-image absolute inset-0"
+          className="mobile-hero-image absolute inset-1"
         />
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-10 mx-auto max-w-md px-5 text-center text-white">
           <h1 className="font-open-sans text-6xl font-bold leading-tight sm:text-4xl">{title}</h1>
           {subtitle && (
-            <p className="mt-3 text-base leading-relaxed text-white/90">{subtitle}</p>
+            <h1 className="mt-3 text-lg sm:text-xl md:text-4xl font-bold leading-relaxed text-white/90" dangerouslySetInnerHTML={{ __html: subtitle }} />
           )}
           {children}
         </div>
@@ -58,9 +58,9 @@ export default function Hero({
         holdDistance={0.4}
       >
         {subtitle && (
-          <p className="text-white/90 text-lg sm:text-xl md:text-2xl max-w-2xl font-light leading-relaxed">
+          <h1 className="text-white/90 text-lg sm:text-xl md:text-4xl font-bold  leading-relaxed">
             {subtitle}
-          </p>
+          </h1>
         )}
         {children}
       </ScrollExpand>

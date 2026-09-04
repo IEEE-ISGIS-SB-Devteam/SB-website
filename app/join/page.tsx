@@ -38,7 +38,7 @@ export default function JoinPage() {
 
         <div className="mt-8 p-6 bg-(--surface-subtle) rounded-xl text-center">
           <p className="text-lg font-semibold">Ready to get started?</p>
-          <a href="#" className="inline-block mt-3 bg-(--ieee-blue) text-white px-8 py-3 rounded-full font-semibold hover:bg-(--ieee-blue-hover) transition">
+          <a href="#" className="inline-block mt-3 bg-(--ieee-blue) text-white px-8 py-3  font-semibold hover:bg-(--ieee-blue-hover) transition">
             Apply Now
           </a>
           <p className="mt-3 text-sm text-(--text-secondary)">

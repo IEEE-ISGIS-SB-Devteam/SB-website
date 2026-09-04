@@ -89,15 +89,32 @@ const CardSwap = ({
 
   const order = useRef(Array.from({ length: childArr.length }, (_, i) => i));
   const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isAnimatingRef = useRef(false);
+  const isPausedRef = useRef(false);
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const total = refs.length;
     refs.forEach((r, i) => placeNow(r.current!, makeSlot(i, cardDistance, verticalDistance, total), skewAmount));
 
+    const clearTimer = () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+
+    const scheduleSwap = (swap: () => void) => {
+      clearTimer();
+      if (!isPausedRef.current) {
+        timerRef.current = setTimeout(swap, effectiveDelay);
+      }
+    };
+
     const swap = () => {
-      if (order.current.length < 2) return;
+      if (order.current.length < 2 || isAnimatingRef.current || isPausedRef.current) return;
+      isAnimatingRef.current = true;
 
       const [front, ...rest] = order.current;
       const elFront = refs[front].current!;
@@ -147,39 +164,45 @@ const CardSwap = ({
 
       tl.call(() => {
         order.current = [...rest, front];
+        isAnimatingRef.current = false;
+        scheduleSwap(swap);
       });
     };
 
-    swap();
     const effectiveDelay = delay / speed;
-    intervalRef.current = setInterval(swap, effectiveDelay);
+    scheduleSwap(swap);
 
     if (pauseOnHover) {
       const node = container.current;
       const pause = () => {
-        if (intervalRef.current) clearInterval(intervalRef.current);
+        isPausedRef.current = true;
+        clearTimer();
       };
       const resume = () => {
-        intervalRef.current = setInterval(swap, effectiveDelay);
+        isPausedRef.current = false;
+        if (!isAnimatingRef.current) scheduleSwap(swap);
       };
       node?.addEventListener("mouseenter", pause);
       node?.addEventListener("mouseleave", resume);
       return () => {
         node?.removeEventListener("mouseenter", pause);
         node?.removeEventListener("mouseleave", resume);
-        if (intervalRef.current) clearInterval(intervalRef.current);
+        clearTimer();
+        tlRef.current?.kill();
+        gsap.killTweensOf(refs.map((ref) => ref.current).filter(Boolean));
       };
     }
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      clearTimer();
+      tlRef.current?.kill();
+      gsap.killTweensOf(refs.map((ref) => ref.current).filter(Boolean));
     };
   }, [cardDistance, verticalDistance, delay, speed, pauseOnHover, skewAmount, easing, height, refs]);
 
   // Fixed TypeScript errors here:
   const rendered = childArr.map((child, i) => {
     if (!isValidElement(child)) return child;
-    // Cast to ReactElement with any props to safely access .props
-    const childElement = child as React.ReactElement<any>;
+    const childElement = child as React.ReactElement<React.HTMLAttributes<HTMLDivElement>>;
     return cloneElement(childElement, {
       key: i,
       ref: refs[i],

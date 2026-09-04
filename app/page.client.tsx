@@ -42,32 +42,32 @@ export default function HomePageClient() {
 
   const cards = [
     {
-      title: "Tech Symposium",
-      description: "Annual gathering of engineering minds with workshops, keynotes, and networking.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=300&fit=crop",
+      title: "Computer Society",
+      description: "The IEEE Computer Society is the world's largest professional organization for computer scientists, engineers, and technology workers",
+      image: "https://i.postimg.cc/XYdpLwPs/Capture-d-ecran-2026-08-25-205149.png",
       label: "Chapter",
       link: "/events/tech-symposium",
     },
     {
       title: "Women in Engineering",
       description: "Empowering women in STEM through mentorship, talks, and community events.",
-      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop",
+      image: "https://i.postimg.cc/R0FsPH9s/white-Photoroom-Photoroom-(2).png",
       label: "WIE",
       link: "/events/women-in-engineering",
     },
     {
-      title: "IEEExtreme",
-      description: "24-hour global coding competition — team up and push your limits.",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop",
+      title: "Industrial Applications Society",
+      description: "The IEEE Industry Applications Society (IAS) is a specialized global organization within the Institute of Electrical and Electronics Engineers (IEEE) that bridges the gap between engineering theory and practical industrial applications.",
+      image: "https://i.postimg.cc/0Qww6WhL/Copie-de-ias.png",
       label: "Competition",
       link: "/events/ieeextreme",
     },
     {
-      title: "Robotics Workshop",
-      description: "Hands-on robotics for beginners, with practical projects and expert guidance.",
-      image: "https://images.unsplash.com/photo-1527430253228-e93688616381?w=400&h=300&fit=crop",
-      label: "Workshop",
-      link: "/events/robotics-workshop",
+      title: "IEEE ISGIS SB",
+      description: "The IEEE ISGIS Student Branch is a vibrant community of students at the Higher Institute of Industrial Management of Sfax, dedicated to fostering innovation, collaboration, and professional growth in the field of technology.",
+      image: "https://i.postimg.cc/FF06dk4b/Capture-d-ecran-2026-09-04-202717.png",
+      label: "Branch",
+      link: "/events/",
     },
   ];
   return (

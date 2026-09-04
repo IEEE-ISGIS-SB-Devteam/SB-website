@@ -1,4 +1,5 @@
 import { generatePageMetadata } from "../lib/seo";
+import ContactMap from "./ContactMap";
 
 // Page-specific metadata
 export const metadata = generatePageMetadata({
@@ -12,68 +13,66 @@ export const metadata = generatePageMetadata({
 
 export default function ContactPage() {
   return (
-    <>
-      <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="font-open-sans text-4xl font-bold"><span className="text-(--ieee-blue)">Contact</span> Us</h1>
-        <p className="mt-2 text-(--text-secondary)">We’d love to hear from you. Reach out with questions, ideas, or collaboration proposals.</p>
-        <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
-      </section>
-
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <h2 className="font-open-sans text-2xl font-bold mb-4">Get in Touch</h2>
-            <p className="text-(--text-secondary) leading-relaxed mb-6">
-              The IEEE ISGIS Student Branch is here to support students, faculty, and industry
-              partners. Whether you have a question, an idea, or want to collaborate — we are just a message away.
-            </p>
-            <div className="mb-4">
-              <strong className="block font-semibold">Email</strong>
-              <a href="mailto:ieee.isgis@example.com" className="text-(--ieee-blue) hover:underline">ieee.isgis@example.com</a>
-            </div>
-            <div className="mb-4">
-              <strong className="block font-semibold">Address</strong>
-              <p className="text-(--text-secondary)">Institut Supérieur de Gestion Industrielle<br />Sfax, Tunisia</p>
-            </div>
-            <div>
-              <strong className="block font-semibold">Follow Us</strong>
-              <div className="flex gap-3 mt-1">
-                <a href="#" className="text-(--ieee-blue) hover:underline">LinkedIn</a>
-                <a href="#" className="text-(--ieee-blue) hover:underline">Facebook</a>
-                <a href="#" className="text-(--ieee-blue) hover:underline">Instagram</a>
-              </div>
-            </div>
+    <main className="container mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
+      <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch lg:gap-16">
+        <section className="order-2 relative flex min-h-[520px] flex-col overflow-hidden pt-2 sm:min-h-[560px] lg:order-1 lg:pt-8" aria-labelledby="contact-heading">
+          <div className="relative z-10">
+          
+            <ContactMap />
           </div>
 
-          <div>
-            <h2 className="font-open-sans text-2xl font-bold mb-4">Send a Message</h2>
-            <form className="space-y-4">
+        </section>
+
+                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-(--surface-subtle) text-(--ieee-blue) shadow-(--shadow-sm)" aria-hidden="true">
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+            </div>
+    
+                <h1 id="contact-heading" className="mt-8 max-w-md font-open-sans text-4xl font-bold tracking-tight sm:text-5xl">Contact us</h1>
+            <p className="mt-5 max-w-[43ch] leading-relaxed text-(--text-secondary)">
+              Have a question, an idea, or a collaboration in mind? The IEEE ISGIS Student Branch would love to hear from you.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-(--text-secondary)">
+              <a href="mailto:ieee.isgis@example.com" className="transition hover:text-(--ieee-blue)">ieee.isgis@example.com</a>
+              <span aria-hidden="true">•</span>
+              <a href="tel:+21600000000" className="transition hover:text-(--ieee-blue)">+216 00 000 000</a>
+              <span aria-hidden="true">•</span>
+              <a href="mailto:contact@ieee-isgis.org" className="transition hover:text-(--ieee-blue)">contact@ieee-isgis.org</a>
+            </div>
+        <section className="contact-card order-1 relative overflow-hidden rounded-3xl p-6 shadow-(--shadow-md) sm:p-10 lg:order-2 lg:p-12" aria-labelledby="message-heading">
+          <div className="pointer-events-none absolute inset-0 opacity-75" style={{ backgroundImage: "linear-gradient(to right, color-mix(in srgb, var(--foreground) 13%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in srgb, var(--foreground) 13%, transparent) 1px, transparent 1px)", backgroundSize: "34px 34px" }} aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+            {[[2, 2], [9, 5], [5, 9], [12, 12]].map(([column, row]) => (
+              <div key={`${column}-${row}`} className="absolute h-[34px] w-[34px] rounded-lg" style={{ left: `${column * 34}px`, top: `${row * 34}px`, backgroundColor: "color-mix(in srgb, var(--foreground) 10%, transparent)", boxShadow: "inset 0 0 14px color-mix(in srgb, var(--foreground) 16%, transparent)" }} />
+            ))}
+          </div>
+          
+          <div className="relative z-10">
+            <h2 id="message-heading" className="font-open-sans text-2xl font-bold sm:text-3xl">Send us a message</h2>
+            <form className="mt-8 space-y-6">
               <div>
-                <label htmlFor="name" className="block font-medium mb-1">Name</label>
-                <input type="text" id="name" placeholder="Your name" className="theme-input w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
+                <label htmlFor="name" className="mb-2 block text-sm font-semibold">Full name</label>
+                <input type="text" id="name" name="name" autoComplete="name" placeholder="John Doe" className="theme-input w-full rounded-xl border px-4 py-3.5 placeholder:text-(--text-muted) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
               </div>
               <div>
-                <label htmlFor="email" className="block font-medium mb-1">Email</label>
-                <input type="email" id="email" placeholder="you@example.com" className="theme-input w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
+                <label htmlFor="email" className="mb-2 block text-sm font-semibold">Email Address</label>
+                <input type="email" id="email" name="email" autoComplete="email" placeholder="john@university.tn" className="theme-input w-full rounded-xl border px-4 py-3.5 placeholder:text-(--text-muted) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
               </div>
               <div>
-                <label htmlFor="message" className="block font-medium mb-1">Message</label>
-                <textarea id="message" rows={4} placeholder="Your message..." className="theme-input w-full resize-y rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)"></textarea>
+                <label htmlFor="subject" className="mb-2 block text-sm font-semibold">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="How can we help?" className="theme-input w-full rounded-xl border px-4 py-3.5 placeholder:text-(--text-muted) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
               </div>
-              <button type="submit" className="bg-(--ieee-blue) text-white px-6 py-2 rounded-full font-semibold hover:bg-(--ieee-blue-hover) transition">
-                Send
-              </button>
+              <div>
+                <label htmlFor="message" className="mb-2 block text-sm font-semibold">Message</label>
+                <textarea id="message" name="message" rows={5} placeholder="Type your message here" className="theme-input min-h-[130px] w-full resize-y rounded-xl border px-4 py-3.5 placeholder:text-(--text-muted) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
+              </div>
+              <button type="submit" className=" bg-(--foreground) px-6 py-3 font-semibold text-(--background) transition hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue) focus:ring-offset-2 focus:ring-offset-(--background)">Send message</button>
             </form>
           </div>
-        </div>
-
-        <div className="mt-10 p-5 bg-(--surface-subtle) rounded-lg text-center">
-          <p className="text-(--text-secondary)">
-            <span className="text-(--ieee-blue) font-bold">✦</span> Prefer to meet in person?
-            Visit us at the ISGIS campus or connect with our student leaders during office hours.
-          </p>
-        </div>
+        </section>
       </div>
-    </>
+    </main>
   );
 }
