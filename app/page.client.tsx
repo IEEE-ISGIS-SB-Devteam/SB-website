@@ -65,7 +65,7 @@ export default function HomePageClient() {
     {
       title: "IEEE ISGIS SB",
       description: "The IEEE ISGIS Student Branch is a vibrant community of students at the Higher Institute of Industrial Management of Sfax, dedicated to fostering innovation, collaboration, and professional growth in the field of technology.",
-      image: "https://i.postimg.cc/FF06dk4b/Capture-d-ecran-2026-09-04-202717.png",
+      image: "https://i.postimg.cc/VLHTtgXM/Copie-de-Posts.png",
       label: "Branch",
       link: "/events/",
     },
