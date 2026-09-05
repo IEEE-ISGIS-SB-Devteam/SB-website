@@ -1,7 +1,6 @@
 /* 1. URL imports MUST be at the absolute top of the document */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
-@import "leaflet/dist/leaflet.css";
 
 @utility font-open-sans {
   font-family: var(--font-open-sans), "Open Sans", system-ui, sans-serif;
@@ -25,6 +24,12 @@ html {
   --surface-subtle: #f5f9fc;
   --surface-input: #f9fafb;
   --contact-card-bg: #f7f8fa;
+  --landing-hero-bg: #dbe7ef;
+  --landing-hero-overlay: rgb(255 255 255 / 76%);
+  --landing-hero-text: #071b2b;
+  --landing-hero-muted: #28465d;
+  --landing-hero-accent: #005b88;
+  --landing-band-bg: #dbe7ef;
   --text-secondary: #4b5563;
   --text-muted: #9ca3af;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
@@ -53,6 +58,12 @@ html.dark {
   --surface-subtle: #1a2a3a;
   --surface-input: #1a1a1a;
   --contact-card-bg: #101112;
+  --landing-hero-bg: #071b2b;
+  --landing-hero-overlay: rgb(7 27 43 / 75%);
+  --landing-hero-text: #ffffff;
+  --landing-hero-muted: rgb(255 255 255 / 85%);
+  --landing-hero-accent: #7dd3fc;
+  --landing-band-bg: #071b2b;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
@@ -175,13 +186,18 @@ img {
 }
 
 .landing-action-secondary {
-  border: 1px solid rgb(255 255 255 / 60%);
-  color: #ffffff;
+  border: 1px solid var(--landing-hero-muted);
+  color: var(--landing-hero-text);
 }
 
 .landing-action-secondary:hover {
-  border-color: #ffffff;
-  background: rgb(255 255 255 / 10%);
+  border-color: var(--landing-hero-text);
+  background: color-mix(in srgb, var(--landing-hero-text) 10%, transparent);
+}
+
+.landing-dark-band {
+  background: var(--landing-band-bg);
+  color: var(--landing-hero-text);
 }
 
 .theme-logo {

@@ -1,10 +1,11 @@
 "use client";
 
 import ScrollExpand from "./ScrollExpand";
+import type { ReactNode } from "react";
 
 interface HeroProps {
   title: string;
-  subtitle?: string;
+  subtitle?: ReactNode;
   imageSrc: string;
   imageAlt?: string;
   scrollHint?: string;
@@ -35,9 +36,7 @@ export default function Hero({
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-10 mx-auto max-w-md px-5 text-center text-white">
           <h1 className="font-open-sans text-6xl font-bold leading-tight sm:text-4xl">{title}</h1>
-          {subtitle && (
-            <h1 className="mt-3 text-lg sm:text-xl md:text-4xl font-bold leading-relaxed text-white/90" dangerouslySetInnerHTML={{ __html: subtitle }} />
-          )}
+          {subtitle && <p className="mt-3 text-lg font-bold leading-relaxed text-white/90 sm:text-xl">{subtitle}</p>}
           {children}
         </div>
       </div>

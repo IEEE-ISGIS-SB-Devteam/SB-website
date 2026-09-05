@@ -207,11 +207,11 @@ const CardSwap = ({
       key: i,
       ref: refs[i],
       style: { width, height, ...(childElement.props.style ?? {}) },
-      onClick: (e: React.MouseEvent) => {
+      onClick: (e: React.MouseEvent<HTMLDivElement>) => {
         childElement.props.onClick?.(e);
         onCardClick?.(i);
       },
-    });
+    } as React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>);
   });
 
   return (

@@ -13,7 +13,7 @@ export default function Navbar() {
   const [showTopBar, setShowTopBar] = useState(true);
   const { theme, toggleTheme } = useTheme();
 
-  const dropdownRef = useRef<HTMLElement>(null);
+  const dropdownRef = useRef<HTMLLIElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);

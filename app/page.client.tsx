@@ -72,22 +72,22 @@ export default function HomePageClient() {
   ];
   return (
     <div>
-      <section className="relative isolate overflow-hidden bg-[#071b2b] text-white">
+      <section className="relative isolate overflow-hidden bg-(--landing-hero-bg) text-(--landing-hero-text)">
         <img
           src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&h=900&fit=crop"
           alt="Students collaborating during an IEEE activity"
           className="landing-hero-image absolute inset-0 -z-10 opacity-35"
         />
-        <div className="absolute inset-0 -z-10 bg-[#071b2b]/75" />
+        <div className="absolute inset-0 -z-10 bg-(--landing-hero-overlay)" />
         <div className="container mx-auto px-4 py-20 sm:py-28 lg:py-36">
           <div className="max-w-3xl">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--landing-hero-accent)">
               IEEE Student Branch
             </p>
             <h1 className="font-open-sans text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Learn, build, and lead with IEEE ISGIS.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-(--landing-hero-muted) sm:text-lg">
               A student community at the Higher Institute of Industrial Management of Sfax, connecting curious students with technology, mentorship, and meaningful projects.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -147,11 +147,11 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      <section className="bg-[#071b2b] text-white">
+      <section className="landing-dark-band">
         <div className="container mx-auto flex flex-col gap-6 px-4 py-12 sm:flex-row sm:items-center sm:justify-between md:py-16">
           <div className="max-w-2xl">
             <h2 className="font-open-sans text-2xl font-bold sm:text-3xl">Ready to take part?</h2>
-            <p className="mt-2 text-sm leading-relaxed text-white/75 sm:text-base">
+            <p className="mt-2 text-sm leading-relaxed text-(--landing-hero-muted) sm:text-base">
               Join IEEE ISGIS and find your next project, event, or opportunity to grow.
             </p>
           </div>
