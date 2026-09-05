@@ -26,6 +26,11 @@ function EventCard({ event, status }: { event: EventItem; status: EventStatus })
       glowRadius={30}
     >
       <article className="event-card-content">
+        <Link
+          className="event-card-hit-area"
+          href={`/events/${event.slug}`}
+          aria-label={`Open ${event.title}`}
+        />
         {event.image && (
           <div className="event-card-image">
             <img src={event.image} alt="" loading="lazy" />

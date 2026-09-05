@@ -480,26 +480,39 @@ html:not(.dark) .border-glow-card > .edge-light {
 }
 
 .event-card-content {
+  position: relative;
   min-width: 0;
   overflow: hidden;
 }
 
+.event-card-hit-area {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .event-card-image {
+  position: relative;
+  z-index: 2;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
   border-bottom: 1px solid var(--surface-card-image-border);
+  pointer-events: none;
 }
 
 .event-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 
 .event-card-body {
   position: relative;
+  z-index: 2;
   padding: 1.25rem;
+  pointer-events: none;
 }
 
 .event-card-body h3 {
@@ -566,6 +579,9 @@ html:not(.dark) .border-glow-card > .edge-light {
 
 .event-learn-more,
 .event-back-link {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
   display: inline-block;
   margin-top: 0.75rem;
   color: var(--surface-card-blue);

@@ -30,9 +30,9 @@ const units = [
   {
     type: "Technical Chapter",
     since: "Since 2022",
-    title: "IEEE Robotics & Automation ISGIS",
+    title: "IEEE Industrial Application Society ISGIS ",
     description:
-      "Hands-on projects, competitions, and workshops for students who want to turn automation ideas into working prototypes.",
+      "The Industry Applications Society (IAS) is a major specialized branch within the Institute of Electrical and Electronics Engineers (IEEE) that connects engineering theory with real-world industrial and commercial needs.",
     logo: "/logos/robotics.svg",
     members: "28 members",
     website: "https://www.ieee.org/societies/robotics.html",
@@ -40,19 +40,7 @@ const units = [
     instagram: "https://www.instagram.com/",
     email: "mailto:ieee.isgis@example.com",
   },
-  {
-    type: "Technical Chapter",
-    since: "Since 2023",
-    title: "IEEE Power & Energy ISGIS",
-    description:
-      "A space to explore renewable energy, smart grids, power systems, and the technologies shaping a sustainable future.",
-    logo: "/logos/power-energy.svg",
-    members: "24 members",
-    website: "https://www.ieee-pes.org/",
-    linkedin: "https://www.linkedin.com/",
-    instagram: "https://www.instagram.com/",
-    email: "mailto:ieee.isgis@example.com",
-  },
+ 
   {
     type: "Affinity Group",
     since: "Since 2022",

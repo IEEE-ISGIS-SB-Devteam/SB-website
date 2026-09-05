@@ -11,7 +11,7 @@ export function generateStaticParams() {
     "career-networking-night",
     "ieee-isgis-i2i-hackathon",
     "ieeextreme-2025",
-    "smart-grid-seminar",
+    "ieee education-week",
     "freshman-welcome-day",
     "tsyp-13",
   ].map((slug) => ({ slug }));

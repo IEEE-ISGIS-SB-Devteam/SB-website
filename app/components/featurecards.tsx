@@ -52,7 +52,7 @@ export default function FeatureCards({
               {ctaSecondaryText && ctaSecondaryLink && (
                 <Link
                   href={ctaSecondaryLink}
-                  className="border border-(--card-border) text-(--foreground) px-6 sm:px-8 py-2.5 sm:py-3  text-sm sm:text-base font-semibold hover:bg-(--card-border)/20 transition"
+                  className="landing-action landing-action-secondary"
                 >
                   {ctaSecondaryText}
                 </Link>
