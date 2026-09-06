@@ -2,9 +2,14 @@
 
 
 import Link from "next/link";
+import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import FeatureCards from "./components/featurecards";
+import ParticleText from "./components/ParticleText";
+import LogoLoop from "./components/LogoLoop";
+import { useTheme } from "./components/ThemeProvider";
+import { SiReact, SiNextdotjs, SiCss, SiTailwindcss, SiTypescript, SiJavascript, SiGithub, SiGit, SiVscodium, SiCodesandbox } from "react-icons/si";
 
 const textRevealVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -17,6 +22,7 @@ const textGroupVariants: Variants = {
 };
 
 export default function HomePageClient() {
+  const { theme } = useTheme();
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [captchaAnswer, setCaptchaAnswer] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -54,42 +60,45 @@ export default function HomePageClient() {
   const cards = [
     {
       title: "Computer Society",
-      description: "The IEEE Computer Society is the world's largest professional organization for computer scientists, engineers, and technology workers",
-      image: "https://i.postimg.cc/XYdpLwPs/Capture-d-ecran-2026-08-25-205149.png",
-      label: "Chapter",
+      description: "Computing ideas, skills, and community for the next generation.",
+      image: "/images/logos/computer-society.webp",
+      label: "CS",
       link: "/events/tech-symposium",
     },
     {
       title: "Women in Engineering",
-      description: "Empowering women in STEM through mentorship, talks, and community events.",
-      image: "https://i.postimg.cc/R0FsPH9s/white-Photoroom-Photoroom-(2).png",
+      description: "Mentorship and leadership for women in engineering and technology.",
+      image: "/images/logos/wie.webp",
       label: "WIE",
       link: "/events/women-in-engineering",
     },
     {
       title: "Industrial Applications Society",
-      description: "The IEEE Industry Applications Society (IAS) is a specialized global organization within the Institute of Electrical and Electronics Engineers (IEEE) that bridges the gap between engineering theory and practical industrial applications.",
-      image: "https://i.postimg.cc/0Qww6WhL/Copie-de-ias.png",
-      label: "Competition",
+      description: "Turning engineering knowledge into practical industrial impact.",
+      image: "/images/logos/ias.webp",
+      label: "IAS",
       link: "/events/ieeextreme",
     },
     {
       title: "IEEE ISGIS SB",
-      description: "The IEEE ISGIS Student Branch is a vibrant community of students at the Higher Institute of Industrial Management of Sfax, dedicated to fostering innovation, collaboration, and professional growth in the field of technology.",
-      image: "https://i.postimg.cc/VLHTtgXM/Copie-de-Posts.png",
-      label: "Branch",
+      description: "A student community built for innovation, collaboration, and growth.",
+      image: "/images/logos/isgis.webp",
+      label: "IEEE ISGIS SB",
       link: "/events/",
     },
   ];
   return (
     <div>
       <section className="relative isolate overflow-hidden bg-(--surface-subtle) text-(--foreground)">
-        <img
-          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&h=900&fit=crop"
+        <Image
+          src="/images/home-hero-1280.webp"
           alt="Students collaborating during an IEEE activity"
-          className="landing-hero-image absolute inset-0 -z-10 opacity-15"
+          fill
+          priority
+          sizes="100vw"
+          className="landing-hero-image absolute inset-0 -z-10 object-cover object-center opacity-15"
         />
-        <div className="absolute inset-0 -z-10 bg-(--landing-hero-overlay)" />
+        <div className="landing-hero-overlay absolute inset-0 -z-10" />
         <div className="container mx-auto px-4 py-20 sm:py-28 lg:py-36">
           <motion.div
             className="max-w-3xl"
@@ -243,6 +252,35 @@ export default function HomePageClient() {
               </form>
             )}
           </div>
+        </div>
+      </section>
+      <section className="border-t-4 border-(--ieee-blue) bg-(--background) px-4 py-12 sm:py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="h-72 sm:h-80 md:h-96">
+            <ParticleText text="IEEE ISGIS SB" particleSize={2.4} density={4} color="var(--particle-accent)" highlightColor="var(--particle-accent)" scatter={180} gatherDuration={1600} stagger={420} pointerRepel={46} repelRadius={120} idleDrift={0.7} trigger="mount" fontSize="clamp(3.5rem, 14vw, 9rem)" fontWeight={800} glow />
+          </div>
+          <LogoLoop
+            direction="left"
+            speed={70}
+            gap={48}
+            fadeOut
+            fadeOutColor="var(--background)"
+            scaleOnHover
+            className="mt-8 py-4"
+            logos={[
+              { node: <SiReact size={38} color="#61DAFB" />, title: "React" },
+              { node: <SiNextdotjs size={38} color="currentColor" />, title: "Next.js" },
+              { node: <SiCss size={38} color="#1572B6" />, title: "CSS" },
+              { node: <SiTailwindcss size={38} color="#06B6D4" />, title: "Tailwind CSS" },
+              { node: <SiTypescript size={38} color="#3178C6" />, title: "TypeScript" },
+              { node: <SiJavascript size={38} color="#F7DF1E" />, title: "JavaScript" },
+              { node: <SiGithub size={38} color={theme === "dark" ? "#f1f5f9" : "#181717"} />, title: "GitHub" },
+              { node: <SiGit size={38} color="#F05032" />, title: "Git" },
+              { node: <SiVscodium size={38} color="#23A8F2" />, title: "VS Code" },
+              { node: <SiGithub size={38} color={theme === "dark" ? "#f1f5f9" : "#181717"} />, title: "GitHub Desktop" },
+              { node: <SiCodesandbox size={38} color={theme === "dark" ? "#f1f5f9" : "#151515"} />, title: "React Bits" },
+            ]}
+          />
         </div>
       </section>
     </div>

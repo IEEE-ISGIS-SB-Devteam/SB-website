@@ -18,6 +18,7 @@ html {
   --foreground: #0a0a0a;
   --ieee-blue: #00629B;
   --ieee-blue-hover: #004b78;
+  --particle-accent: var(--ieee-blue);
   --card-bg: #ffffff;
   --card-border: #e5e7eb;
   --surface-card-image-border: #e5e7eb;
@@ -25,7 +26,7 @@ html {
   --surface-input: #f9fafb;
   --contact-card-bg: #f7f8fa;
   --landing-hero-bg: #dbe7ef;
-  --landing-hero-overlay: rgb(255 255 255 / 76%);
+  --landing-hero-overlay: linear-gradient(90deg, rgb(255 255 255 / 58%) 0%, rgb(255 255 255 / 38%) 55%, rgb(255 255 255 / 24%) 100%);
   --landing-hero-text: #071b2b;
   --landing-hero-muted: #28465d;
   --landing-hero-accent: #005b88;
@@ -52,6 +53,7 @@ html.dark {
   --background: #0a0a0a;
   --foreground: #f1f5f9;
   --ieee-blue-hover: #4a9eff;
+  --particle-accent: #2b74e1;
   --card-bg: #141414;
   --card-border: #2a2a2a;
   --surface-card-image-border: #2a2a2a;
@@ -59,7 +61,7 @@ html.dark {
   --surface-input: #1a1a1a;
   --contact-card-bg: #101112;
   --landing-hero-bg: #071b2b;
-  --landing-hero-overlay: rgb(7 27 43 / 75%);
+  --landing-hero-overlay: linear-gradient(90deg, rgb(7 27 43 / 64%) 0%, rgb(7 27 43 / 46%) 55%, rgb(7 27 43 / 32%) 100%);
   --landing-hero-text: #ffffff;
   --landing-hero-muted: rgb(255 255 255 / 85%);
   --landing-hero-accent: #7dd3fc;
@@ -264,6 +266,10 @@ img {
   object-fit: cover;
 }
 
+.landing-hero-overlay {
+  background: var(--landing-hero-overlay);
+}
+
 .landing-action {
   display: inline-flex;
   align-items: center;
@@ -305,6 +311,15 @@ img {
   background: var(--landing-band-bg);
   color: var(--landing-hero-text);
 }
+
+.logo-loop { position: relative; width: 100%; overflow: hidden; }
+.logo-loop--fade::before, .logo-loop--fade::after { content: ""; position: absolute; top: 0; bottom: 0; width: 12%; z-index: 1; pointer-events: none; }
+.logo-loop--fade::before { left: 0; background: linear-gradient(90deg, var(--fade-color), transparent); }
+.logo-loop--fade::after { right: 0; background: linear-gradient(270deg, var(--fade-color), transparent); }
+.logo-loop__track { display: flex; width: max-content; align-items: center; gap: var(--logo-gap); }
+.logo-loop__item { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; color: var(--foreground); transition: transform 200ms ease, color 200ms ease; }
+.logo-loop--scale .logo-loop__item:hover { transform: scale(1.16); }
+.particle-text { font-family: var(--font-open-sans), "Open Sans", sans-serif; }
 
 .theme-logo {
   filter: brightness(0);

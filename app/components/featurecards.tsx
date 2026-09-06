@@ -29,7 +29,7 @@ export default function FeatureCards({
   cards,
 }: FeatureCardsProps) {
   return (
-    <section className="py-10 md:py-20">
+    <section className="pb-6 pt-10 md:py-20">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
           {/* Left: Text & CTAs */}
@@ -77,12 +77,13 @@ export default function FeatureCards({
               >
                 {cards.map((card, idx) => {
                   const imageElement = (
-                    <div className="w-full h-full overflow-hidden rounded-2xl border border-(--card-border) shadow-(--shadow-md) bg-(--card-bg)">
+                    <div className="w-full h-full overflow-hidden rounded-2xl border border-(--card-border) shadow-(--shadow-md) bg-(--card-bg) p-[15%]">
                       <img
                         src={card.image}
                         alt={card.title}
                         loading="lazy"
-                        className="h-full w-full object-contain object-center hover:scale-105 transition duration-500"
+                        className="h-full w-full object-contain object-center transition duration-500 hover:scale-105"
+                        style={card.title === "Women in Engineering" ? { filter: "invert(1)" } : undefined}
                       />
                     </div>
                   );
@@ -117,18 +118,21 @@ export default function FeatureCards({
                         {card.label}
                       </span>
                     )}
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-contain object-center"
-                    />
+                    <div className="aspect-[4/3] w-full bg-white p-[15%]">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        loading="lazy"
+                        className="h-full w-full object-contain object-center"
+                        style={card.title === "Women in Engineering" ? { filter: "invert(1)" } : undefined}
+                      />
+                    </div>
                   </div>
                   <div className="p-3">
-                        <h3 className="font-open-sans font-bold text-(--foreground) text-sm">
+                        <h3 className="min-h-[2.5rem] font-open-sans font-bold text-(--foreground) text-sm leading-tight">
                       {card.title}
                     </h3>
-                    <p className="text-xs text-(--text-secondary) mt-1 line-clamp-2">
+                    <p className="mt-1 text-xs leading-relaxed text-(--text-secondary)">
                       {card.description}
                     </p>
                   </div>

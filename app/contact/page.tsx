@@ -44,12 +44,12 @@ export default function ContactPage() {
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-(--text-muted)">Follow IEEE ISGIS</p>
                 <div className="mt-3 flex items-center gap-3">
-                  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="IEEE ISGIS on Instagram" className="text-(--text-secondary) transition hover:text-(--ieee-blue)">
+                  <a href="https://www.instagram.com/ieee_isgis_sb/" target="_blank" rel="noopener noreferrer" aria-label="IEEE ISGIS on Instagram" className="text-(--text-secondary) transition hover:text-(--ieee-blue)">
                     <svg aria-hidden="true" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5ZM17.5 6a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.5 6Z" />
                     </svg>
                   </a>
-                  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="IEEE ISGIS on Facebook" className="text-(--text-secondary) transition hover:text-(--ieee-blue)">
+                  <a href="https://www.facebook.com/IEEE.ISGIS.SB" target="_blank" rel="noopener noreferrer" aria-label="IEEE ISGIS on Facebook" className="text-(--text-secondary) transition hover:text-(--ieee-blue)">
                     <svg aria-hidden="true" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M13.5 22v-8h2.75l.5-3h-3.25V9.05c0-.87.24-1.55 1.62-1.55h1.73V4.82c-.3-.04-1.3-.12-2.46-.12-2.43 0-4.09 1.49-4.09 4.23V11H7.5v3h2.8v8h3.2Z" />
                     </svg>
