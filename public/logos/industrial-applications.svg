@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <rect width="160" height="160" rx="24" fill="#007c83"/>
+  <path d="M80 16 96 25v18l-16 9-16-9V25z" fill="#fff"/>
+  <text x="80" y="38" fill="#007c83" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">IEEE</text>
+  <text x="80" y="76" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">INDUSTRY</text>
+  <text x="80" y="94" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">APPLICATIONS</text>
+  <text x="80" y="112" fill="#d3ffff" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">SOCIETY</text>
+  <path d="M35 126h90" stroke="#9ce5e3" stroke-width="2"/>
+  <text x="80" y="142" fill="#e8ffff" font-family="Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="1" text-anchor="middle">ISGIS CHAPTER</text>
+</svg>

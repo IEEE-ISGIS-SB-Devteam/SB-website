@@ -35,7 +35,7 @@ export default function Hero({
         />
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-10 mx-auto max-w-md px-5 text-center text-white">
-          <h1 className="font-open-sans text-6xl font-bold leading-tight sm:text-4xl">{title}</h1>
+          <h1 className="font-open-sans text-6xl font-bold leading-tight tracking-[0.02em] sm:text-4xl">{title}</h1>
           {subtitle && <p className="mt-3 text-lg font-bold leading-relaxed text-white/90 sm:text-xl">{subtitle}</p>}
           {children}
         </div>
@@ -57,7 +57,7 @@ export default function Hero({
         holdDistance={0.4}
       >
         {subtitle && (
-          <h1 className="text-white/90 text-lg sm:text-xl md:text-4xl font-bold  leading-relaxed">
+          <h1 className="font-open-sans text-white/90 text-lg sm:text-xl md:text-4xl font-bold leading-relaxed tracking-[0.02em]">
             {subtitle}
           </h1>
         )}

@@ -1,4 +1,5 @@
 import { generatePageMetadata } from "../lib/seo";
+import PageHero from "../components/PageHero";
 import BorderGlow from "../components/BorderGlow/BorderGlow";
 import Link from "next/link";
 import { pastEvents, upcomingEvents, type EventItem, type EventStatus } from "../lib/events";
@@ -67,11 +68,13 @@ export const metadata = generatePageMetadata({
 export default function EventsPage() {
   return (
     <>
-      <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="font-open-sans text-4xl font-bold"><span className="text-(--ieee-blue)">Events</span></h1>
-        <p className="mt-2 text-(--text-secondary)">Past, current, and upcoming events organized by our student branch.</p>
-        <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
-      </section>
+      <PageHero
+        eyebrow="IEEE ISGIS Activities"
+        kicker="Learning together since 2018"
+        title="Events"
+        accent="& Activities."
+        description="Past, current, and upcoming events where IEEE ISGIS members learn, collaborate, and build their field."
+      />
 
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <section aria-labelledby="upcoming-events-heading" className="events-section">

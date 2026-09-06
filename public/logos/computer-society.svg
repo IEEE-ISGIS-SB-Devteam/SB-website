@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"><rect width="160" height="160" rx="24" fill="#2563eb"/><rect x="34" y="38" width="92" height="62" rx="8" fill="none" stroke="white" stroke-width="10"/><path d="M52 122h56M80 100v22" stroke="white" stroke-width="10" stroke-linecap="square"/><circle cx="80" cy="69" r="12" fill="#93c5fd"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+	<rect width="160" height="160" rx="24" fill="#0876c9"/>
+	<path d="M80 16 96 25v18l-16 9-16-9V25z" fill="#fff"/>
+	<text x="80" y="38" fill="#0876c9" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">IEEE</text>
+	<text x="80" y="83" fill="#fff" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-anchor="middle">COMPUTER</text>
+	<text x="80" y="103" fill="#fff" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-anchor="middle">SOCIETY</text>
+	<path d="M35 119h90" stroke="#b9e3ff" stroke-width="2"/>
+	<text x="80" y="136" fill="#e8f6ff" font-family="Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="1" text-anchor="middle">ISGIS CHAPTER</text>
+</svg>

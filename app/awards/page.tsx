@@ -1,4 +1,5 @@
 import { generatePageMetadata } from "../lib/seo";
+import PageHero from "../components/PageHero";
 
 // Page-specific metadata
 export const metadata = generatePageMetadata({
@@ -12,11 +13,13 @@ export const metadata = generatePageMetadata({
 export default function AwardsPage() {
   return (
     <>
-      <section className="py-16 px-4 text-center border-b border-(--card-border)">
-        <h1 className="font-open-sans text-4xl font-bold"><span className="text-(--ieee-blue)">Awards</span> &amp; Recognition</h1>
-        <p className="mt-2 text-(--text-secondary)">Celebrating excellence and achievement within our student branch.</p>
-        <div className="w-16 h-1 bg-(--ieee-blue) mx-auto mt-4 rounded-full"></div>
-      </section>
+      <PageHero
+        eyebrow="IEEE ISGIS Recognition"
+        kicker="Celebrating excellence since 2018"
+        title="Awards"
+        accent="& Recognition."
+        description="Celebrating the members and teams whose excellence, leadership, and service strengthen our student branch."
+      />
 
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <h2 className="font-open-sans text-2xl font-bold mb-4">Branch Awards</h2>

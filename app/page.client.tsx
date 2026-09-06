@@ -3,7 +3,18 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { motion, type Variants } from "framer-motion";
 import FeatureCards from "./components/featurecards";
+
+const textRevealVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+};
+
+const textGroupVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
 
 export default function HomePageClient() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -72,33 +83,42 @@ export default function HomePageClient() {
   ];
   return (
     <div>
-      <section className="relative isolate overflow-hidden bg-(--landing-hero-bg) text-(--landing-hero-text)">
+      <section className="relative isolate overflow-hidden bg-(--surface-subtle) text-(--foreground)">
         <img
           src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&h=900&fit=crop"
           alt="Students collaborating during an IEEE activity"
-          className="landing-hero-image absolute inset-0 -z-10 opacity-35"
+          className="landing-hero-image absolute inset-0 -z-10 opacity-15"
         />
         <div className="absolute inset-0 -z-10 bg-(--landing-hero-overlay)" />
         <div className="container mx-auto px-4 py-20 sm:py-28 lg:py-36">
-          <div className="max-w-3xl">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--landing-hero-accent)">
+          <motion.div
+            className="max-w-3xl"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={textGroupVariants}
+          >
+            <motion.p variants={textRevealVariants} className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-(--ieee-blue)">
               IEEE Student Branch
-            </p>
-            <h1 className="font-open-sans text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Learn, build, and lead with IEEE ISGIS.
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-(--landing-hero-muted) sm:text-lg">
+            </motion.p>
+            <motion.h1 variants={textRevealVariants} className="font-open-sans text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              Learn, build, and lead with{" "}
+              <span className="bg-linear-to-r from-(--ieee-blue) to-indigo-400 bg-clip-text text-transparent">
+                IEEE ISGIS.
+              </span>
+            </motion.h1>
+            <motion.p variants={textRevealVariants} className="mt-6 max-w-2xl text-base leading-relaxed text-(--text-secondary) sm:text-lg">
               A student community at the Higher Institute of Industrial Management of Sfax, connecting curious students with technology, mentorship, and meaningful projects.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            </motion.p>
+            <motion.div variants={textRevealVariants} className="mt-8 flex flex-wrap gap-3">
               <Link href="/join" className="landing-action landing-action-primary">
                 Join the branch
               </Link>
               <Link href="/about" className="landing-action landing-action-secondary">
                 Discover IEEE ISGIS
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -116,45 +136,51 @@ export default function HomePageClient() {
 
       <section className="border-y border-(--card-border) bg-(--card-bg)">
         <div className="container mx-auto px-4 py-12 md:py-16">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-(--ieee-blue)">
+          <motion.div
+            className="max-w-2xl"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={textGroupVariants}
+          >
+            <motion.p variants={textRevealVariants} className="text-sm font-semibold uppercase tracking-[0.16em] text-(--ieee-blue)">
               Why get involved
-            </p>
-            <h2 className="font-open-sans mt-3 text-2xl font-bold text-(--foreground) sm:text-3xl">
+            </motion.p>
+            <motion.h2 variants={textRevealVariants} className="font-open-sans mt-3 text-2xl font-bold text-(--foreground) sm:text-3xl">
               Turn your interests into experience.
-            </h2>
-          </div>
+            </motion.h2>
+          </motion.div>
           <div className="mt-8 grid gap-8 sm:grid-cols-3">
-            <div>
-              <h3 className="text-lg font-bold text-(--foreground)">Build practical skills</h3>
-              <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={textGroupVariants}>
+              <motion.h3 variants={textRevealVariants} className="text-lg font-bold text-(--foreground)">Build practical skills</motion.h3>
+              <motion.p variants={textRevealVariants} className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
                 Learn through workshops, challenges, and projects that connect theory to real problems.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-(--foreground)">Meet your community</h3>
-              <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
+              </motion.p>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={textGroupVariants}>
+              <motion.h3 variants={textRevealVariants} className="text-lg font-bold text-(--foreground)">Meet your community</motion.h3>
+              <motion.p variants={textRevealVariants} className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
                 Find teammates, mentors, and friends who share your curiosity about technology.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-(--foreground)">Create an impact</h3>
-              <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
+              </motion.p>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={textGroupVariants}>
+              <motion.h3 variants={textRevealVariants} className="text-lg font-bold text-(--foreground)">Create an impact</motion.h3>
+              <motion.p variants={textRevealVariants} className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
                 Take part in outreach and initiatives that use engineering to serve our community.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
         </div>
       </section>
 
       <section className="landing-dark-band">
         <div className="container mx-auto flex flex-col gap-6 px-4 py-12 sm:flex-row sm:items-center sm:justify-between md:py-16">
-          <div className="max-w-2xl">
-            <h2 className="font-open-sans text-2xl font-bold sm:text-3xl">Ready to take part?</h2>
-            <p className="mt-2 text-sm leading-relaxed text-(--landing-hero-muted) sm:text-base">
+          <motion.div className="max-w-2xl" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={textGroupVariants}>
+            <motion.h2 variants={textRevealVariants} className="font-open-sans text-2xl font-bold sm:text-3xl">Ready to take part?</motion.h2>
+            <motion.p variants={textRevealVariants} className="mt-2 text-sm leading-relaxed text-(--landing-hero-muted) sm:text-base">
               Join IEEE ISGIS and find your next project, event, or opportunity to grow.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           <Link href="/join" className="landing-action landing-action-primary w-fit">
             Become a member
           </Link>
@@ -163,17 +189,17 @@ export default function HomePageClient() {
 
       <section className="border-t border-(--card-border) bg-(--surface-subtle)">
         <div className="container mx-auto flex flex-col gap-6 px-4 py-12 md:flex-row md:items-center md:justify-between md:py-16">
-          <div className="max-w-xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-(--ieee-blue)">
+          <motion.div className="max-w-xl" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={textGroupVariants}>
+            <motion.p variants={textRevealVariants} className="text-sm font-semibold uppercase tracking-[0.16em] text-(--ieee-blue)">
               Stay in the loop
-            </p>
-            <h2 className="font-open-sans mt-2 text-2xl font-bold text-(--foreground) sm:text-3xl">
+            </motion.p>
+            <motion.h2 variants={textRevealVariants} className="font-open-sans mt-2 text-2xl font-bold text-(--foreground) sm:text-3xl">
               Workshop and event updates, in your inbox.
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
+            </motion.h2>
+            <motion.p variants={textRevealVariants} className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
               Get practical news about workshops, competitions, chapter activities, and other IEEE ISGIS opportunities.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           <div className="w-full max-w-md">
             {newsletterStatus === "success" ? (
               <p className="border border-(--card-border) bg-(--card-bg) px-4 py-3 text-sm font-semibold text-(--foreground)">

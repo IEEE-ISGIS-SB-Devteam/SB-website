@@ -96,6 +96,112 @@ body {
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+.loading-screen {
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.loading-screen--exit {
+  opacity: 0;
+  transform: translateY(-1.5rem);
+  pointer-events: none;
+}
+
+.loading-screen__traces path {
+  fill: none;
+  stroke: var(--ieee-blue);
+  stroke-width: 1.75;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 3px var(--ieee-blue));
+  will-change: stroke-dashoffset;
+  animation: loading-trace-draw 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: calc(var(--trace-index) * 120ms);
+}
+
+.loading-screen__traces circle {
+  fill: var(--ieee-blue);
+  opacity: 0;
+  animation: loading-node-reveal 300ms ease-out forwards;
+  animation-delay: calc(900ms + var(--node-index) * 65ms);
+}
+
+.loading-screen__ring-line {
+  animation: loading-ring-pulse 1.8s cubic-bezier(0.22, 1, 0.36, 1) 900ms 2;
+}
+
+.loading-screen__logo {
+  opacity: 0;
+  transform: scale(0.72);
+  animation: loading-logo-in 900ms cubic-bezier(0.22, 1.3, 0.36, 1) 450ms forwards;
+}
+
+.loading-screen__progress {
+  opacity: 0;
+  animation: loading-content-in 400ms ease-out 1.1s forwards;
+}
+
+html:not(.dark) .loading-screen__logo {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+@keyframes loading-trace-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes loading-node-reveal {
+  to {
+    opacity: 0.95;
+  }
+}
+
+@keyframes loading-ring-pulse {
+  0% { opacity: 0; transform: scale(0.78); }
+  35% { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(1.18); }
+}
+
+@keyframes loading-logo-in {
+  0% { opacity: 0; transform: scale(0.72); }
+  72% { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes loading-content-in {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen,
+  .loading-screen--exit {
+    transition-duration: 300ms;
+  }
+
+  .loading-screen__traces path,
+  .loading-screen__traces circle,
+  .loading-screen__ring-line,
+  .loading-screen__logo {
+    animation: none;
+  }
+
+  .loading-screen__traces path {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+
+  .loading-screen__traces circle,
+  .loading-screen__logo,
+  .loading-screen__progress {
+    opacity: 1;
+  }
+
+  .loading-screen__logo {
+    transform: none;
+  }
+}
+
 h1,
 h2,
 h3,

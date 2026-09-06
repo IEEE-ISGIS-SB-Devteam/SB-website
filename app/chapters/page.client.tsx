@@ -21,7 +21,7 @@ const units = [
     description:
       "A practical community for software engineering, artificial intelligence, cybersecurity, and emerging computing technologies.",
     logo: "/logos/computer-society.svg",
-    members: "32 members",
+    members: "4 members",
     website: "https://www.ieee.org/societies/computer.html",
     linkedin: "https://www.linkedin.com/",
     instagram: "https://www.instagram.com/",
@@ -33,8 +33,8 @@ const units = [
     title: "IEEE Industrial Application Society ISGIS ",
     description:
       "The Industry Applications Society (IAS) is a major specialized branch within the Institute of Electrical and Electronics Engineers (IEEE) that connects engineering theory with real-world industrial and commercial needs.",
-    logo: "/logos/robotics.svg",
-    members: "28 members",
+    logo: "/logos/industrial-applications.svg",
+    members: "4 members",
     website: "https://www.ieee.org/societies/robotics.html",
     linkedin: "https://www.linkedin.com/",
     instagram: "https://www.instagram.com/",
@@ -48,7 +48,7 @@ const units = [
     description:
       "Mentorship, leadership, outreach, and professional development for women and allies in engineering and technology.",
     logo: "/logos/wie.svg",
-    members: "36 members",
+    members: "4 members",
     website: "https://wie.ieee.org/",
     linkedin: "https://www.linkedin.com/",
     instagram: "https://www.instagram.com/",
@@ -188,13 +188,13 @@ export default function ChaptersClient() {
                 className="mt-6 flex flex-wrap items-center gap-6 text-sm"
               >
                 <span className="flex items-center gap-1.5">
-                  <span className="font-bold text-(--ieee-blue)">12+</span> chapters
+                  <span className="font-bold text-(--ieee-blue)">3</span> chapters
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="font-bold text-(--ieee-blue)">850+</span> members
+                  <span className="font-bold text-(--ieee-blue)">20+</span> members
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="font-bold text-(--ieee-blue)">35+</span> events/year
+                  <span className="font-bold text-(--ieee-blue)">15+</span> events/year
                 </span>
               </motion.div>
               <motion.div
