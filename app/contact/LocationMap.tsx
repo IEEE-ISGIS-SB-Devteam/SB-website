@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react";
 import { CircleMarker, MapContainer, Popup, TileLayer, useMap } from "react-leaflet";
 
-const campusPosition: [number, number] = [34.7398574, 10.7618239];
-const lightTiles = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-const darkTiles = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+const campusPosition: [number, number] = [34.8385146, 10.7535426];
+const openStreetMapTiles = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
 function InteractionHint() {
   const map = useMap();
@@ -46,7 +45,7 @@ function ThemeTiles() {
     return () => observer.disconnect();
   }, []);
 
-  return <TileLayer key={isDark ? "dark" : "light"} url={isDark ? darkTiles : lightTiles} attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; CARTO' maxZoom={20} />;
+  return <TileLayer key={isDark ? "dark" : "light"} url={openStreetMapTiles} attribution="&copy; OpenStreetMap contributors" maxZoom={20} />;
 }
 
 export default function LocationMap() {
@@ -54,7 +53,7 @@ export default function LocationMap() {
     <div className="relative mt-8 h-[240px] w-full overflow-hidden rounded-3xl shadow-(--shadow-sm) sm:h-[280px]">
       <MapContainer
         center={campusPosition}
-        zoom={15}
+        zoom={16}
         scrollWheelZoom={false}
         dragging
         touchZoom
@@ -65,8 +64,8 @@ export default function LocationMap() {
         <ThemeTiles />
         <CircleMarker center={campusPosition} radius={9} pathOptions={{ color: "#00629B", fillColor: "#00629B", fillOpacity: 1, weight: 3 }}>
           <Popup closeButton>
-            <strong>ISGIS - IEEE Student Branch</strong><br />
-            Technopole de Sfax, Tunisia
+            <strong>IEEE ISGIS Student Branch</strong><br />
+            Technopôle de Sfax, Route de Tunis Km 10, 3021 Sfax
           </Popup>
         </CircleMarker>
         <InteractionHint />
