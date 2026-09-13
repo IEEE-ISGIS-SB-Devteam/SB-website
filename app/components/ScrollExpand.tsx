@@ -68,19 +68,21 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
   const hintRef = useRef<HTMLDivElement>(null);
 
   const propsRef = useRef<Omit<ScrollExpandProps, "src" | "mediaType" | "poster" | "alt" | "children" | "className" | "style">>({});
-  propsRef.current = {
-    startWidth,
-    startHeight,
-    startRadius,
-    endRadius,
-    mediaZoom,
-    scrollDistance,
-    holdDistance,
-    smoothing,
-    overlayScrim,
-    useWindowScroll,
-    enabled,
-  };
+  useEffect(() => {
+    propsRef.current = {
+      startWidth,
+      startHeight,
+      startRadius,
+      endRadius,
+      mediaZoom,
+      scrollDistance,
+      holdDistance,
+      smoothing,
+      overlayScrim,
+      useWindowScroll,
+      enabled,
+    };
+  }, [startWidth, startHeight, startRadius, endRadius, mediaZoom, scrollDistance, holdDistance, smoothing, overlayScrim, useWindowScroll, enabled]);
 
   const applyProgress = useCallback((p: number) => {
     const frame = frameRef.current;

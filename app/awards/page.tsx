@@ -30,10 +30,8 @@ export default function AwardsPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
-            { title: 'Outstanding Student Leader', meta: '2025 • Ahmed Ben Salem', desc: 'Recognized for exceptional leadership in organizing the IEEExtreme 2025 event.' },
-            { title: 'Best Technical Project', meta: '2025 • Smart Irrigation Team', desc: 'IoT-based irrigation system that won the regional innovation competition.' },
-            { title: 'Volunteer of the Year', meta: '2025 • Mariam Kammoun', desc: 'Dedicated over 100 hours to branch activities, workshops, and outreach.' },
-            { title: 'IEEE Best Chapter Award', meta: '2024 • IEEE ISGIS', desc: 'Recognized as the best student branch chapter in the Tunisia section.' },
+            { title: 'Under Construction', meta: '', desc: '' },
+
           ].map((award, i) => (
             <div key={i} className="border border-(--card-border) rounded-xl p-5 hover:border-(--ieee-blue) transition">
               <h4 className="font-semibold">{award.title}</h4>

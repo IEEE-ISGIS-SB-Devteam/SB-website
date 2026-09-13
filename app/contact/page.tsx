@@ -25,7 +25,7 @@ export default function ContactPage() {
       />
       <main className="container mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch lg:gap-16">
-          <section className="order-2 relative flex min-h-[520px] flex-col overflow-hidden pt-2 sm:min-h-[560px] lg:order-1 lg:pt-8" aria-label="Our location">
+  <section className="order-2 relative flex min-h-[520px] flex-col overflow-hidden pt-2 sm:min-h-[560px] lg:order-1 lg:pt-8" aria-label="Our location">
           <div className="relative z-10">
             <ContactMap />
             <div className="mt-6 space-y-4 border-t border-(--card-border) pt-5">
@@ -33,6 +33,12 @@ export default function ContactPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-(--text-muted)">Email</p>
                 <a href="mailto:sb-isgis@ieee.org" className="mt-1 block text-sm font-medium text-(--foreground) transition hover:text-(--ieee-blue)">
                   sb-isgis@ieee.org
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-(--text-muted)">Phone Number</p>
+                <a href="tel:+21673888888" className="mt-1 block text-sm font-medium text-(--foreground) transition hover:text-(--ieee-blue)">
+                  +216 73 888 888
                 </a>
               </div>
               <div>
