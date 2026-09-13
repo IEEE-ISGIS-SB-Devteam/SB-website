@@ -3,7 +3,7 @@ import PageHero from "../components/PageHero";
 
 // Page-specific metadata
 export const metadata = generatePageMetadata({
-  title: "Owar Awards & Recognition",
+  title: "Our Awards & Recognition",
   description: "Learn about the IEEE ISGIS Student Branch – our mission, vision, and values.",
   openGraph: {
     title: "About IEEE ISGIS Student Branch",

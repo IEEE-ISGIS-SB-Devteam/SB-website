@@ -867,3 +867,14 @@ html:not(.dark) .border-glow-card > .edge-light {
     gap: 1rem;
   }
 }
+.events-empty-message {
+  grid-column: 1 / -1;
+  padding: 2.5rem 1.5rem;
+  border: 1px dashed var(--card-border);
+  border-radius: 16px;
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  text-align: center;
+}

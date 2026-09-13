@@ -77,12 +77,16 @@ export default function EventsPage() {
       />
 
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <section aria-labelledby="upcoming-events-heading" className="events-section">
-          <h2 id="upcoming-events-heading" className="events-section-heading">Upcoming Events</h2>
-          <div className="events-grid">
-            {upcomingEvents.map((event) => <EventCard key={event.title} event={event} status="Upcoming" />)}
-          </div>
-        </section>
+       <section aria-labelledby="upcoming-events-heading" className="events-section">
+  <h2 id="upcoming-events-heading" className="events-section-heading">Upcoming Events</h2>
+  <div className="events-grid">
+    {upcomingEvents.length === 0 ? (
+      <p className="events-empty-message">There are no upcoming events for now — check back soon.</p>
+    ) : (
+      upcomingEvents.map((event) => <EventCard key={event.title} event={event} status="Upcoming" />)
+    )}
+  </div>
+</section>
 
         <section aria-labelledby="past-events-heading" className="events-section events-section--past">
           <h2 id="past-events-heading" className="events-section-heading">Past Events</h2>

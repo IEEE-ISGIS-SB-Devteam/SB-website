@@ -23,8 +23,8 @@ const units = [
     logo: "/logos/computer-society.svg",
     members: "4 members",
     website: "https://www.ieee.org/societies/computer.html",
-    linkedin: "https://www.linkedin.com/",
-    instagram: "https://www.instagram.com/",
+    linkedin: "https://www.linkedin.com/in/ieee-cs-isgis-sbc-18905037a/",
+    instagram: "https://www.instagram.com/ieee.cs.isgis.sbc/",
     email: "mailto:ieee.isgis@example.com",
   },
   {
@@ -37,7 +37,7 @@ const units = [
     members: "4 members",
     website: "https://www.ieee.org/societies/robotics.html",
     linkedin: "https://www.linkedin.com/",
-    instagram: "https://www.instagram.com/",
+    instagram: "https://www.instagram.com/ieee_ias_isgi_sbc/",
     email: "mailto:ieee.isgis@example.com",
   },
  
@@ -51,7 +51,7 @@ const units = [
     members: "4 members",
     website: "https://wie.ieee.org/",
     linkedin: "https://www.linkedin.com/",
-    instagram: "https://www.instagram.com/",
+    instagram: "http://instagram.com/ieee_wie_isgis_sag/",
     email: "mailto:ieee.isgis@example.com",
   },
 ];
@@ -275,80 +275,15 @@ export default function ChaptersClient() {
             </p>
           </div>
 
-          <div className="space-y-6">
-            {[
-              {
-                title: "AI & Ethics Workshop",
-                unit: "Computer Society",
-                date: "Oct 28, 2026",
-                time: "5:30 PM GMT+1",
-                location: "Online",
-                registerLink: "/register/ai-ethics-workshop",
-              },
-              {
-                title: "Robotics Hackathon",
-                unit: "Robotics & Automation",
-                date: "Nov 5, 2026",
-                time: "9:00 AM – 6:00 PM",
-                location: "ISGIS Campus Lab",
-                registerLink: "/register/robotics-hackathon",
-              },
-              {
-                title: "Renewable Energy Panel",
-                unit: "Power & Energy",
-                date: "Nov 12, 2026",
-                time: "4:00 PM GMT+1",
-                location: "Hybrid (Room 201 & Zoom)",
-                registerLink: "/register/renewable-energy-panel",
-              },
-              {
-                title: "Women in Tech Mentorship",
-                unit: "Women in Engineering",
-                date: "Nov 19, 2026",
-                time: "6:00 PM GMT+1",
-                location: "Online",
-                registerLink: "/register/women-in-tech-mentorship",
-              },
-            ].map((event, idx) => (
-              <motion.div
-                key={event.title}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                viewport={{ once: true }}
-                className="group relative flex flex-col gap-2 border-l-4 border-(--landing-hero-accent) pl-5 transition-all hover:border-(--landing-hero-accent)/80 sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div className="flex-1">
-                  <h3 className="font-open-sans text-lg font-bold text-(--landing-hero-text) group-hover:text-(--landing-hero-accent)">
-                    {event.title}
-                  </h3>
-                  <p className="mt-0.5 text-sm font-medium text-(--landing-hero-accent)">
-                    {event.unit}
-                  </p>
-                  <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-(--landing-hero-muted)">
-                    <span className="inline-flex items-center gap-1.5">
-                      <FontAwesomeIcon icon={faCalendar} className="h-3.5 w-3.5" />
-                      {event.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <FontAwesomeIcon icon={faClock} className="h-3.5 w-3.5" />
-                      {event.time}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <FontAwesomeIcon icon={faLocationDot} className="h-3.5 w-3.5" />
-                      {event.location}
-                    </span>
-                  </div>
-                </div>
-                <a
-                  href={event.registerLink}
-                  className="shrink-0 self-start rounded-lg border border-(--landing-hero-accent) px-4 py-1.5 text-sm font-semibold text-(--landing-hero-accent) transition-all hover:bg-(--landing-hero-accent) hover:text-(--landing-hero-bg) sm:self-center"
-                  aria-label={`Register for ${event.title}`}
-                >
-                  Register →
-                </a>
-              </motion.div>
-            ))}
+                  <div className="flex min-h-[180px] items-center justify-center">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-xl text-center text-sm leading-relaxed text-(--landing-hero-muted) sm:text-base"
+            >
+              There are no upcoming events for now — check back soon.
+            </motion.p>
           </div>
         </div>
       </section>

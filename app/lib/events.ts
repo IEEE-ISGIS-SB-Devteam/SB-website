@@ -12,30 +12,7 @@ export type EventItem = {
 };
 
 export const upcomingEvents: EventItem[] = [
-  {
-    slug: "ai-robotics-workshop",
-    title: "AI & Robotics Workshop",
-    status: "Upcoming",
-    date: "15 Dec 2026 • 14:00–17:00",
-    description: "Hands-on session covering fundamentals of AI and robotic control systems.",
-    fullDescription: "Hands-on session covering fundamentals of AI and robotic control systems.",
-  },
-  {
-    slug: "ieee-isgis-general-assembly",
-    title: "IEEE ISGIS General Assembly",
-    status: "Upcoming",
-    date: "10 Jan 2026 • 18:00",
-    description: "Yearly general assembly — all members are invited to vote and propose new initiatives.",
-    fullDescription: "Yearly general assembly — all members are invited to vote and propose new initiatives.",
-  },
-  {
-    slug: "career-networking-night",
-    title: "Career & Networking Night",
-    status: "Upcoming",
-    date: "22 Feb 2026 • 19:00",
-    description: "Connect with industry professionals, alumni, and fellow students.",
-    fullDescription: "Connect with industry professionals, alumni, and fellow students.",
-  },
+
 ];
 
 export const pastEvents: EventItem[] = [
@@ -72,7 +49,9 @@ export const pastEvents: EventItem[] = [
     status: "Past",
     date: "Sep 2026",
     description: "Welcoming students with a day of...",
+    image:"https://i.postimg.cc/G3zfWJwQ/Capture-d-ecran-2026-09-13-123104.png",
     fullDescription: "Welcoming students with a day of fun, learning, and networking.",
+   
   },
   {
     slug: "tsyp-13",
