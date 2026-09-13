@@ -77,7 +77,7 @@ export default function JoinPage() {
 
         <div className="mt-12 rounded-xl bg-(--surface-subtle) p-6 text-center">
           <p className="text-lg font-semibold text-(--foreground)">Ready to get started?</p>
-          <a href="#" className="mt-3 inline-block bg-(--ieee-blue) px-8 py-3 font-semibold text-white transition hover:bg-(--ieee-blue-hover)">Apply Now</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSef0MFIvWdFtN7dObJG-Bec1hZr4PISbGBV3-yorWcMFPrYPg/viewform" className="mt-3 inline-block bg-(--ieee-blue) px-8 py-3 font-semibold text-white transition hover:bg-(--ieee-blue-hover)">Apply Now</a>
           <p className="mt-3 text-sm text-(--text-secondary)">Membership is open to all majors</p>
         </div>
       </div>
