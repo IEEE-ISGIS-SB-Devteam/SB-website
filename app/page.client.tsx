@@ -35,7 +35,7 @@ export default function HomePageClient() {
       return;
     }
 
-    const scriptUrl = process.env.NEXT_PUBLIC_NEWSLETTER_SCRIPT_URL;
+    const scriptUrl = process.env.NEWSLETTER_SCRIPT_URL;
     if (!scriptUrl) {
       setNewsletterStatus("error");
       return;

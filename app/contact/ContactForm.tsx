@@ -15,6 +15,7 @@ export default function ContactForm() {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [confirmation, setConfirmation] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const validateField = (field: keyof FormValues, value: string) => {
     if (!value.trim()) return `${field[0].toUpperCase()}${field.slice(1)} is required.`;
@@ -36,7 +37,7 @@ export default function ContactForm() {
     setErrors((current) => ({ ...current, [field]: validateField(field, values[field]) }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const nextErrors = Object.fromEntries(
       (Object.keys(values) as Array<keyof FormValues>)
@@ -47,10 +48,33 @@ export default function ContactForm() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    const body = `Name: ${values.name}\nEmail: ${values.email}\n\n${values.message}`;
-    const mailto = `mailto:sb-isgis@ieee.org?subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setConfirmation("Opening your email client...");
+    const scriptUrl = process.env.NEWSLETTER_SCRIPT_URL;
+    if (!scriptUrl) {
+      setConfirmation("Contact endpoint is not configured.");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      await fetch(scriptUrl, {
+        method: "POST",
+        // text/plain avoids a CORS preflight that Apps Script can't answer
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          type: "contact",
+          name: values.name,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
+        }),
+      });
+      setConfirmation("Thanks! Your message was sent.");
+      setValues(initialValues);
+    } catch {
+      setConfirmation("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const fieldError = (field: keyof FormValues) => errors[field];
@@ -86,7 +110,9 @@ export default function ContactForm() {
             <textarea id="message" name="message" value={values.message} onChange={(event) => handleChange("message", event.target.value)} onBlur={() => handleBlur("message")} aria-invalid={Boolean(fieldError("message"))} aria-describedby={fieldError("message") ? "message-error" : undefined} rows={5} placeholder="Type your message here" className="theme-input min-h-[130px] w-full resize-y rounded-xl border px-4 py-3.5 placeholder:text-(--text-muted) focus:outline-none focus:ring-2 focus:ring-(--ieee-blue)" />
             {fieldError("message") && <p id="message-error" className="mt-1 text-sm text-red-600 dark:text-red-400">{fieldError("message")}</p>}
           </div>
-          <button type="submit" className="bg-(--foreground) px-6 py-3 font-semibold text-(--background) transition hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue) focus:ring-offset-2 focus:ring-offset-(--background)">Send message</button>
+          <button type="submit" disabled={submitting} className="bg-(--foreground) px-6 py-3 font-semibold text-(--background) transition hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-(--ieee-blue) focus:ring-offset-2 focus:ring-offset-(--background) disabled:cursor-wait disabled:opacity-60">
+            {submitting ? "Sending…" : "Send message"}
+          </button>
           {confirmation && <p role="status" className="text-sm font-semibold text-(--ieee-blue)">{confirmation}</p>}
         </form>
       </div>
