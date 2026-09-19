@@ -48,7 +48,7 @@ export default function ContactForm() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    const scriptUrl = process.env.NEWSLETTER_SCRIPT_URL;
+    const scriptUrl = process.env.NEXT_PUBLIC_NEWSLETTER_SCRIPT_URL;
     if (!scriptUrl) {
       setConfirmation("Contact endpoint is not configured.");
       return;

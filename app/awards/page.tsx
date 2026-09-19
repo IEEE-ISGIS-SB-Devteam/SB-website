@@ -10,6 +10,15 @@ export const metadata = generatePageMetadata({
     description: "Learn about our community, history, and commitment to excellence.",
   },
 });
+
+const awards = [
+  { tier: "silver", rank: "2nd", title: "PES TGM", meta: "" },
+  { tier: "bronze", rank: "3rd", title: "TSYP", meta: "Agriculture Domain" },
+  { tier: "honor", rank: "SB", title: "Small Outstanding Student Branch", meta: "2024" },
+  { tier: "silver", rank: "2nd", title: "IEEE Tajmaana", meta: "" },
+  { tier: "gold", rank: "1st", title: "i2i 2.0", meta: "" },
+] as const;
+
 export default function AwardsPage() {
   return (
     <>
@@ -28,17 +37,21 @@ export default function AwardsPage() {
           contributions to the branch, technical excellence, and community leadership.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {[
-            { title: 'Under Construction', meta: '', desc: '' },
-
-          ].map((award, i) => (
-            <div key={i} className="border border-(--card-border) rounded-xl p-5 hover:border-(--ieee-blue) transition">
-              <h4 className="font-semibold">{award.title}</h4>
-              <p className="text-sm text-(--text-muted)">{award.meta}</p>
-              <p className="text-sm mt-1">{award.desc}</p>
-            </div>
-          ))}
+        <div className="awards-section relative">
+          <div className="awards-grid-backdrop" aria-hidden="true" />
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {awards.map((award, i) => (
+              <div key={i} className="award-plaque" data-tier={award.tier}>
+                <div className={`award-badge${award.tier === "honor" ? " award-badge--honor" : ""}`}>
+                  {award.rank}
+                </div>
+                <div>
+                  <p className="award-title">{award.title}</p>
+                  {award.meta && <p className="award-meta">{award.meta}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <p className="mt-8 text-(--text-secondary)">
