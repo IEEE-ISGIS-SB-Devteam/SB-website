@@ -199,10 +199,9 @@ const CardSwap = ({
     };
   }, [cardDistance, verticalDistance, delay, speed, pauseOnHover, skewAmount, easing, height, refs]);
 
-  // Fixed TypeScript errors here:
   const rendered = childArr.map((child, i) => {
     if (!isValidElement(child)) return child;
-    const childElement = child as React.ReactElement<React.HTMLAttributes<HTMLDivElement>>;
+    const childElement = child as React.ReactElement<React.ComponentPropsWithRef<"div">>;
     return cloneElement(childElement, {
       key: i,
       ref: refs[i],
@@ -211,7 +210,7 @@ const CardSwap = ({
         childElement.props.onClick?.(e);
         onCardClick?.(i);
       },
-    } as React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>);
+    });
   });
 
   return (
