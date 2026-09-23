@@ -21,7 +21,7 @@ const units = [
     description:
       "A practical community for software engineering, artificial intelligence, cybersecurity, and emerging computing technologies.",
     logo: "/logos/computer-society.svg",
-    members: "4 members",
+    members: "35 members",
     website: "https://www.ieee.org/societies/computer.html",
     linkedin: "https://www.linkedin.com/in/ieee-cs-isgis-sbc-18905037a/",
     instagram: "https://www.instagram.com/ieee.cs.isgis.sbc/",
