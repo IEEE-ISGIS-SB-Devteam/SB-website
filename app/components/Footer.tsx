@@ -38,7 +38,7 @@ export default function Footer() {
             <ul className="space-y-1.5 text-sm">
               <li><a href="https://www.linkedin.com/company/ieee-isgis-student-branch/posts/" className="text-(--text-secondary) hover:text-(--foreground) transition">LinkedIn</a></li>
               <li><a href="https://www.facebook.com/IEEE.ISGIS.SB" className="text-(--text-secondary) hover:text-(--foreground) transition">Facebook</a></li>
-              <li><a href="https://www.linkedin.com/company/ieee-isgis-student-branch/posts/" className="text-(--text-secondary) hover:text-(--foreground) transition">Instagram</a></li>
+              <li><a href="https://www.instagram.com/ieee.isgis.sb/" className="text-(--text-secondary) hover:text-(--foreground) transition">Instagram</a></li>
               <li><a href="mailto:ieee.isgis.sb@gmail.com" className="text-(--text-secondary) hover:text-(--foreground) transition">Email Us</a></li>
             </ul>
           </div>
