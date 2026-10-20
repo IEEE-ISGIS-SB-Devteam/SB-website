@@ -72,6 +72,10 @@ This website was designed and developed by:
 
 The project was developed collaboratively to support the digital presence of the **IEEE ISGIS Student Branch**.
 
+## Credits
+
+Mourad Znidi and Ali Cheikh.
+
 ---
 
 ## 🤝 Contributing

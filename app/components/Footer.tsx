@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { developers } from "../lib/site";
 
 export default function Footer() {
   return (
@@ -110,6 +111,26 @@ export default function Footer() {
           </p>
           <p className="text-xs text-(--text-muted) mt-1 max-w-2xl mx-auto">
             A public charity, IEEE is the world&apos;s largest technical professional organization dedicated to advancing technology for the benefit of humanity.
+          </p>
+          <p className="mt-2 text-xs font-open-sans text-[#75787B] dark:text-(--text-secondary)">
+            Developed by{" "}
+            {developers.map((developer, index) => (
+              <span key={developer.name}>
+                {index > 0 && " and "}
+                {developer.url ? (
+                  <a
+                    href={developer.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-(--ieee-blue)"
+                  >
+                    {developer.name}
+                  </a>
+                ) : (
+                  developer.name
+                )}
+              </span>
+            ))}
           </p>
         </div>
       </div>
