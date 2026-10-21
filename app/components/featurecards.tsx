@@ -14,6 +14,7 @@ interface FeatureCardsProps {
     title: string;
     description: string;
     image: string;
+    logoBacking: "light" | "dark";
     label?: string;
     link?: string;
   }[];
@@ -78,7 +79,11 @@ export default function FeatureCards({
                 {cards.map((card, idx) => {
                   const imageElement = (
                     <div className="w-full h-full overflow-hidden rounded-2xl border border-(--card-border) shadow-(--shadow-md) bg-(--card-bg)">
-                      <div className="h-full w-full rounded-xl bg-white p-[15%]">
+                      <div
+                        className={`h-full w-full rounded-xl p-[15%] ${
+                          card.logoBacking === "dark" ? "bg-[#002855]" : "bg-white"
+                        }`}
+                      >
                         <img
                           src={card.image}
                           alt={card.title}
@@ -119,7 +124,11 @@ export default function FeatureCards({
                         {card.label}
                       </span>
                     )}
-                    <div className="aspect-[4/3] w-full bg-white p-[15%]">
+                    <div
+                      className={`aspect-[4/3] w-full p-[15%] ${
+                        card.logoBacking === "dark" ? "bg-[#002855]" : "bg-white"
+                      }`}
+                    >
                       <img
                         src={card.image}
                         alt={card.title}
