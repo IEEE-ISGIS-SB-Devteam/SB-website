@@ -39,9 +39,13 @@ export default function AwardsPage() {
 
         <div className="awards-section relative">
           <div className="awards-grid-backdrop" aria-hidden="true" />
-          <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="relative grid auto-rows-fr grid-cols-1 sm:grid-cols-2 gap-5">
             {awards.map((award, i) => (
-              <div key={i} className="award-plaque" data-tier={award.tier}>
+              <div
+                key={i}
+                className={`award-plaque${award.meta ? "" : " award-plaque--no-meta"}`}
+                data-tier={award.tier}
+              >
                 <div className={`award-badge${award.tier === "honor" ? " award-badge--honor" : ""}`}>
                   {award.rank}
                 </div>

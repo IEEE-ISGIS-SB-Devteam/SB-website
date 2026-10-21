@@ -77,14 +77,15 @@ export default function FeatureCards({
               >
                 {cards.map((card, idx) => {
                   const imageElement = (
-                    <div className="w-full h-full overflow-hidden rounded-2xl border border-(--card-border) shadow-(--shadow-md) bg-(--card-bg) p-[15%]">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        loading="lazy"
-                        className="h-full w-full object-contain object-center transition duration-500 hover:scale-105"
-                        style={card.title === "Women in Engineering" ? { filter: "invert(1)" } : undefined}
-                      />
+                    <div className="w-full h-full overflow-hidden rounded-2xl border border-(--card-border) shadow-(--shadow-md) bg-(--card-bg)">
+                      <div className="h-full w-full rounded-xl bg-white p-[15%]">
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          loading="lazy"
+                          className="h-full w-full object-contain object-center transition duration-500 hover:scale-105"
+                        />
+                      </div>
                     </div>
                   );
                   return (
@@ -124,7 +125,6 @@ export default function FeatureCards({
                         alt={card.title}
                         loading="lazy"
                         className="h-full w-full object-contain object-center"
-                        style={card.title === "Women in Engineering" ? { filter: "invert(1)" } : undefined}
                       />
                     </div>
                   </div>

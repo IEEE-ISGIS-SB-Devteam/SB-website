@@ -36,12 +36,6 @@ export default function ContactPage() {
                   </a>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-(--text-muted)">Phone Number</p>
-                  <a href="tel:+21673888888" className="mt-1 block text-sm font-medium text-(--foreground) transition hover:text-(--ieee-blue)">
-                    +216 73 888 888
-                  </a>
-                </div>
-                <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-(--text-muted)">Address</p>
                   <p className="mt-1 text-sm leading-relaxed text-(--text-secondary)">
                     Technopôle de Sfax, Route de Tunis Km 10, 3021 Sfax

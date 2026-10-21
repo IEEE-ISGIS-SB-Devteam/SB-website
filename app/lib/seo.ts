@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const SITE_NAME = "IEEE ISGIS Student Branch";
 const SITE_DESCRIPTION =
   "The official student branch of the Institut Supérieur de Gestion Industrielle de Sfax. Bridging technology, engineering, and innovation.";
-const SITE_URL = "https://ieee-isgis.vercel.app";
+const SITE_URL = "https://isgis.ieee.tn";
 
 const SITE_LOGO = "/og-image.svg";
 

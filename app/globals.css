@@ -919,6 +919,10 @@ html:not(.dark) .border-glow-card > .edge-light {
 .award-plaque[data-tier="bronze"] { --tier-color: var(--award-bronze); }
 .award-plaque[data-tier="honor"] { --tier-color: var(--ieee-blue); }
 
+.award-plaque--no-meta {
+  align-items: center;
+}
+
 .award-plaque:hover {
   transform: translateY(-3px);
   background: color-mix(in srgb, var(--tier-color) 6%, var(--card-bg));

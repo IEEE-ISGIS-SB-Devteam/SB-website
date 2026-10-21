@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getEventBySlug } from "../../lib/events";
+import { events, getEventBySlug } from "../../lib/events";
 import { generatePageMetadata } from "../../lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return [
-    "ai-robotics-workshop",
-    "ieee-isgis-general-assembly",
-    "career-networking-night",
-    "ieee-isgis-i2i-hackathon",
-    "ieeextreme-2025",
-    "ieee education-week",
-    "freshman-welcome-day",
-    "tsyp-13",
-  ].map((slug) => ({ slug }));
+  return events.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
