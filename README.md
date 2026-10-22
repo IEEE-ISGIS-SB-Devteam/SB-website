@@ -4,7 +4,7 @@ Official website of the **IEEE ISGIS Student Branch** at the Institut Supérieur
 
 The website provides a modern digital platform for showcasing our Student Branch, activities, events, Chapters and Affinity Groups, achievements, and membership opportunities.
 
-🔗 **Live Website:** [ieeeisgissb.vercel.app](https://ieeeisgissb-keetos-projects.vercel.app/)
+🔗 **Live Website:** [ieeeisgissb.vercel.app](https://isgis.ieee.tn/)
 
 ---
 
@@ -34,7 +34,7 @@ The website provides a modern digital platform for showcasing our Student Branch
 | Maps | [Leaflet](https://leafletjs.com/) |
 | Backend Integration | Google Apps Script |
 | Linting | ESLint |
-| Deployment | [Vercel](https://vercel.com/) |
+| Deployment | [Vercel](https://filezilla-project.org/) |
 
 ---
 
